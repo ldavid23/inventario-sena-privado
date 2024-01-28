@@ -1,0 +1,162 @@
+body {
+    background: #fff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.banner .container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background: #39a900;
+    box-shadow: 0 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+h4 {
+    background: #39a900;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+img {
+    width: clamp(35px, 50px, 60px);
+    height: auto;
+    margin: 0px 10px;
+}
+
+.card-container {
+    height: 450px;
+    width: 75%;
+    display: flex;
+    justify-content: space-between; /*uniformemente */
+    margin: 150px 220px 0px 170px;
+}
+
+.card {
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1),
+        -2px 2px 4px rgba(0, 0, 0, 0.1), 2px -2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0px; /*  margen entre las tarjetass */
+    flex: 1;
+}
+
+section > img {
+    position: relative;
+    padding: 10px;
+    top: 40px;
+    width: 550px;
+}
+
+.form {
+    position: relative;
+    border-radius: 0 10px 10px 0; /* Redondea solo los bordes del lado derecho */
+    background: linear-gradient(
+        180deg,
+        #39a900 0%,
+        rgba(57, 169, 0, 0.74) 70.5%,
+        rgba(57, 169, 0, 0.65) 86.5%,
+        rgba(57, 169, 0, 0.42) 99.99%,
+        rgba(57, 169, 0, 0) 100%
+    );
+    padding: 20px;
+}
+
+
+.form-title, section > h4{
+    margin: 10px 10px;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+h4 ~ p{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: -10px
+
+}
+
+.form-label{
+    color: #fff;
+    font-size: 100;
+    font-weight: bold;
+}
+
+.input-content{
+    top: 20px;
+    left: 15px;
+   padding: 5px;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon input {
+    width: calc(100% - 30px);
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-right: 30px;
+}
+
+.input-with-icon input:focus {
+    outline: none;
+}
+
+
+.input-with-icon i {
+    position: absolute;
+    top: 70%;
+    right: 40px;
+    transform: translateY(-70%);
+    font-size: 25px;
+    font-weight: bold;
+    color: #39a900;
+}
+
+
+input[type="submit"] {
+    position: relative;
+    top: 60px;
+    left: 120px;
+    padding: 15px 60px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 100;
+    font-weight: bold;
+}
+
+
+
+input[type="submit"]:hover{
+    background: #fff;
+    color: #39a900;
+    border: 1px solid #39a900;
+}
+
+
+@media only screen and (max-width: 400px) {
+    .banner {
+        height: 40px;
+    }
+
+    h4 {
+        margin-left: 0px;
+        font-size: 12px;
+    }
+
+    img {
+        max-width: 35px;
+        margin: 10px;
+    }
+}
