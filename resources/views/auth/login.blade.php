@@ -23,40 +23,45 @@
             <h4 class="fs-5 m-2">SERVICIO NACIONAL DE APRENDIZAJE</h4>
         </div>
     </header>
+    <center>
+        <main class="main card-container">
+            <section class="carding">
+                <img src="{{ asset('img/Ilustracion.svg') }}" alt="">
+            </section>
+    
+            <section class="card form">
+                <div class="form-title">
+                    <h4>CENTRO NACIONAL COLOMBO ALEMAN</h4>
+                    <p>SEGUIMIENTO DE INSTRUCTORES</p>
+                </div>
+                <div class="form-content">
+                    <form action="" method="post">
+                        <div class="input-with-icon input-content">
+                            <label for="" class="form-label">Usuario</label>
+                            <input type="text" placeholder="Usuario">
+                            <i class="bi bi-person"></i>
+    
+                        </div>
+    
+                        <div class="input-with-icon input-content">
+                            <label for="" class="form-label">Contraseña</label>
+                            <input type="text" placeholder="Contraseña">
+                            <i class="bi bi-unlock"></i>
+                        </div>
 
-    <main class="main card-container">
-        <section class="card">
-            <img src="{{ asset('img/Ilustracion.svg') }}" alt="">
-        </section>
+                        
+                        <div class="input-button">
+                            <input type="submit" value="INGRESAR">
+                        </div>
+                    
 
-        <section class="card form">
-            <div class="form-title">
-                <h4>CENTRO NACIONAL COLOMBO ALEMAN</h4>
-                <p>SEGUIMIENTO DE INSTRUCTORES</p>
-            </div>
-            <div class="form-content">
-                <form action="" method="post">
-                    <div class="input-with-icon input-content">
-                        <label for="" class="form-label">Usuario</label>
-                        <input type="text" placeholder="Usuario">
-                        <i class="bi bi-person"></i>
-
-                    </div>
-
-                    <div class="input-with-icon input-content">
-                        <label for="" class="form-label">Contraseña</label>
-                        <input type="text" placeholder="Contraseña">
-                        <i class="bi bi-unlock"></i>
-                    </div>
-                    <div class="input-button">
-                        <input type="submit" value="INGRESAR">
-                    </div>
-                </form>
-
-
-            </div>
-        </section>
-    </main>
+                    </form>
+    
+    
+                </div>
+            </section>
+        </main>   
+    </center>
 
 </body>
 
