@@ -9,6 +9,12 @@ class Coordinaciones extends Model
 {
     use HasFactory;
 
+    static $rules = [
+        'coordinacion' => 'required',
+        'encargado'  => 'required',
+
+    ];
+
     protected $fillable = [
         'coordinacion',
         'encargado'
