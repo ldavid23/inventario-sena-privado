@@ -8,6 +8,10 @@ use App\Models\User;
 
 class CoordinacionesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
     public function index()
@@ -52,7 +56,7 @@ class CoordinacionesController extends Controller
 
             } else {
                 return redirect()->route('coordinators')
-                ->with('error', 'Funcionario Regisrado');
+                ->with('error', 'Funcionario ya Regisrado');
             }
 
         }else{
