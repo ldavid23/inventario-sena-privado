@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('coordinaciones', function (Blueprint $table) {
             $table->id();
             $table->string('coordinacion');
-            $table->foreignId('user_id')
-            ->constrained('users')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->string('encargado');
+            // $table->foreignId('user_id')
+            // ->constrained('users')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
             $table->timestamps();
         });
     }

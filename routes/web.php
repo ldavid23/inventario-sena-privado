@@ -72,10 +72,10 @@ Route::get('/coordinators', [App\Http\Controllers\CoordinacionesController::clas
 Route::post('/coordinators', [App\Http\Controllers\CoordinacionesController::class, 'store'])->name('coordinators.post');
 
 //Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
-Route::put('/coordinators/{coordinatorId}', [App\Http\Controllers\CoordinacionesController::class, 'update'])->name('coordinators.update');
+Route::post('/coordinators/{id}', [App\Http\Controllers\CoordinacionesController::class, 'update'])->name('coordinators.update');
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
-Route::delete('/coordinators/{coordinatorId}', [App\Http\Controllers\CoordinacionesController::class, 'destroy'])->name('coordinators.destroy');
+Route::delete('/coordinators/{id}', [App\Http\Controllers\CoordinacionesController::class, 'destroy'])->name('coordinators.destroy');
 
 /*
 |--------------------------------------------------------------------------

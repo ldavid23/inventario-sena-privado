@@ -11,7 +11,8 @@ class Coordinaciones extends Model
 
     protected $fillable = [
         'coordinacion',
-        'user_id'
+        'encargado'
     ];
+
 
 }
