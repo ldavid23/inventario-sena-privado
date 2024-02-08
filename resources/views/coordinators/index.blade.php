@@ -9,39 +9,9 @@
     <div class="formulario">
         <form action="{{route('coordinators.post')}}" method="post" class="row needs-validation" novalidate>
             @csrf
-            <div class="col-md-4 mb-3">
-                <label for="name" class="form-label fw-semibold">Nombre Completo:</label>
-                <input type="text" class="form-control border-2 shadow-sm" id="name" name="name"
-                    placeholder="Ingresar nombre y apellidos" required>
-                <div class="invalid-feedback fw-medium" class="">
-                    <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
-                </div>
-                @if ($errors->has('name'))
-                    <div class="text-danger fw-medium small">
-                        <i class="bi bi-exclamation-circle"></i>
-                        Este campo es obligatorio!
-                    </div>
-                @endif
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <label for="identificacion" class="form-label fw-semibold">Número de Identificación:</label>
-                <input type="number" class="form-control border-2 shadow-sm" id="email" name="email"
-                    placeholder="Ingresar número de identificación" required>
-                <div class="invalid-feedback fw-medium">
-                    <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
-                </div>
-                @if ($errors->has('email'))
-                    <div class="text-danger fw-medium">
-                        <i class="bi bi-exclamation-circle"></i>
-                        Este campo es obligatorio!
-                    </div>
-                @endif
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <label for="rol" class="form-label fw-semibold">Rol del Funcionario:</label>
-                <input type="text" class="form-control border-2 shadow-sm" id="coordinacion" name="coordinacion">
+            <div class="col-md-6 mb-3">
+                <label for="rol" class="form-label fw-semibold">Coordinacion:</label>
+                <input type="text" class="form-control border-2 shadow-sm" id="coordinacion" name="coordinacion" placeholder="Ingresar número de identificación">
                 <div class="invalid-feedback fw-medium">
                     <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                 </div>
@@ -52,6 +22,23 @@
                     </div>
                 @endif
             </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="name" class="form-label fw-semibold">Encargado:</label>
+                <input type="text" class="form-control border-2 shadow-sm" id="encargado" name="encargado"
+                    placeholder="Ingresar nombre y apellidos" required>
+                <div class="invalid-feedback fw-medium" class="">
+                    <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
+                </div>
+                @if ($errors->has('encargado'))
+                    <div class="text-danger fw-medium small">
+                        <i class="bi bi-exclamation-circle"></i>
+                        Este campo es obligatorio!
+                    </div>
+                @endif
+            </div>
+
+
 
             <div class="text-center mb-2">
                 <button type="submit" class="btn btn-success fw-medium sahdow-sm ">Registrar
@@ -67,7 +54,6 @@
                 <thead>
                     <tr>
                         <th>Funcionario</th>
-                        <th>Identificación</th>
                         <th>Coordinacion</th>
                         <th>Funciones</th>
                     </tr>
@@ -75,14 +61,20 @@
                 <tbody>
                     @foreach ($coordinators as $coordinator)
                     <tr>
-                        <td>{{ $coordinator['coordinator_name'] }}</td>
-                        <td>{{ $coordinator['user_id'] }}</td>
-                        <td> coordinacion</td>
-                        <td> funciones
-                          {{-- <button onclick="editCoordinator($coordinator['coordinator_id'])">edit</button>
-                          <button>delete</button> --}}
+                        <td>{{ $coordinator->coordinacion }}</td>
+                        <td>{{ $coordinator->encargado }}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm fw-semibold"
+                                data-bs-toggle="modal" data-bs-target="#edit{{ $coordinator->id }}">
+                                Editar <i class="bi bi-pencil-square"></i>
+                            </button>
+
+                            <a href="#" class="btn btn-danger btn-sm fw-semibold"
+                                onclick="alerta('{{ $coordinator->email }}')">Eliminar <i
+                                    class="bi bi-trash3"></i></a>
                         </td>
                     </tr>
+                    @include('coordinators.edit')
                 @endforeach
             </table>
         </div>

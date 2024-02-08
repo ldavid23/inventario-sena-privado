@@ -10,7 +10,7 @@
 
     <div class="ms-4 mt-3">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success fw-medium sahdow-sm" data-bs-toggle="modal" data-bs-target="#modalId">
+        <button type="button" class="btn btn-success fw-medium shadow-sm" data-bs-toggle="modal" data-bs-target="#modalId">
             Registrar Funcionario <i class="bi bi-person-fill-add"></i>
         </button>
 

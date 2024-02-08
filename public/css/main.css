@@ -79,6 +79,10 @@ li {
 i{
     color: #ccc;
 }
+
+td > button > i{
+    color: #000;
+}
 hr{
     border: 1px solid #000;
 }

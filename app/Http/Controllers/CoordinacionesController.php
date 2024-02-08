@@ -27,43 +27,25 @@ class CoordinacionesController extends Controller
     {
         // Create - Save a new item to the database
         $request->validate([
-            'name' => 'required|string',
-            'email' => 'required',
             'coordinacion' => 'required|string',
+            'encargado' => 'required|string',
+
         ]);
 
         $coordinators = Coordinaciones::where('coordinacion', '=', $request->coordinacion)->first();
 
         if (!$coordinators) {
-            $usuarioExiste = User::where('email', '=', $request->email)->first();
-            if (!$usuarioExiste) {
-
-                $usuario = User::factory()->create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => bcrypt($request->email),
-                ]);
-
-                $user_id = User::where('email', '=', $request->email)->first();
-
-
-                $Coordinacion = Coordinaciones::create([
-                    'coordinacion' => $request->name,
-                    'user_id' => $user_id->id,
-                ]);
-                return redirect()->route('coordinators')
-                ->with('success', 'Proceso Terminado');
-
-            } else {
-                return redirect()->route('coordinators')
-                ->with('error', 'Funcionario ya Regisrado');
-            }
-
-        }else{
+            $Coordinacion = Coordinaciones::create([
+                'coordinacion' => $request->coordinacion,
+                'encargado' => $request->encargado,
+            ]);
             return redirect()->route('coordinators')
-            ->with('error', 'Coordinacion Regisrada');
+                ->with('success', 'Proceso Terminado');
+        } else {
+            return redirect()->route('coordinators')
+                ->with('error', 'Coordinacion Regisrada');
+        }
     }
-}
 
 
 
@@ -71,14 +53,24 @@ class CoordinacionesController extends Controller
     {
         // Update - Save the edited item to the database
         $request->validate([
-            'coordinator_name' => 'string',
-            'user_id' => 'numeric',
-        ]);
-        $coordinator = Coordinaciones::find($id);
-        $coordinator->update($request->all());
+            'coordinacion' => 'required|string',
+            'encargado' => 'required|string',
 
-        return redirect()->route('coordinators.index')
-            ->with('success', 'Coordinator updated successfully.');
+        ]);
+
+
+        $coordinators = Coordinaciones::where('coordinacion', '=', $request->coordinacion)->where('id', '!=', $id)->first();
+
+        if (!$coordinators) {
+            $coordinator = Coordinaciones::find($id);
+            $coordinator->update($request->all());
+            return redirect()->route('coordinators')
+                ->with('success', 'Coordinator updated successfully.');
+
+        } else {
+            return redirect()->route('coordinators')
+                ->with('error', 'Coordinacion Regisrada');
+        }
     }
 
     public function destroy($id)
