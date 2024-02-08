@@ -1,4 +1,12 @@
-<h1>HOLA INDEX</h1>
+@extends('layouts.app')
+
+@section('content')
+
+@endsection
+
+
+
+{{-- <h1>HOLA INDEX</h1>
 
 @if ($coordinators->isEmpty())
     <h2>No se encontraron evaluaciones registradas</h2>
@@ -31,4 +39,4 @@
   const editCoordinator = (coordinatorId) => {
     window.location.href = `/coordinators/${coordinatorId}`
   }
-</script>
+</script> --}}

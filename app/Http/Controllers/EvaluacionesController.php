@@ -7,59 +7,81 @@ use Illuminate\Http\Request;
 
 class EvaluacionesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        // Read - Display a list of items
+        $evaluations = Evaluaciones::all();
+
+        return view('evaluations.index', compact('evaluations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        // Create - Show the form to create a new item
+        return view('evaluations.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function show($id)
+    {
+        // Read - Display a single item
+        $evaluation = Evaluaciones::find($id);
+
+        return view('evaluations.show', compact('evaluation'));
+    }
+
+    public function edit($id)
+    {
+        // Update - Show the form to edit an item
+        $evaluation = Evaluaciones::find($id);
+
+        return view('evaluations.edit', compact('evaluation'));
+    }
+
     public function store(Request $request)
     {
-        //
+        // Create - Save a new item to the database
+        $request->validate([
+            'evaluation_date' => 'required|date',
+            'evaluation_month' => 'required|string',
+            'workplan' => 'required|numeric',
+            'partials' => 'required|numeric',
+            'finals' => 'required|numeric',
+            'extraordinary' => 'required|numeric',
+            'instructors_id' => 'required|numeric',
+        ]);
+
+        Evaluaciones::create($request->all());
+
+        return redirect()->route('evaluations.index')
+            ->with('success', 'Evaluations created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Evaluaciones $evaluaciones)
+    public function update(Request $request, $id)
     {
-        //
+        // Update - Save the edited item to the database
+        $request->validate([
+            'evaluation_date' => 'date',
+            'evaluation_month' => 'string',
+            'workplan' => 'numeric',
+            'partials' => 'numeric',
+            'finals' => 'numeric',
+            'extraordinary' => 'numeric',
+            'instructors_id' => 'numeric',
+        ]);
+        $evaluation = Evaluaciones::find($id);
+        $evaluation->update($request->all());
+
+        return redirect()->route('evaluations.index')
+            ->with('success', 'Evaluation updated successfully.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Evaluaciones $evaluaciones)
+    public function destroy($id)
     {
-        //
-    }
+        // Delete - Remove an item from the database
+        $evaluation = Evaluaciones::find($id);
+        $evaluation->delete();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Evaluaciones $evaluaciones)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Evaluaciones $evaluaciones)
-    {
-        //
+        return redirect()->route('evaluations.index')
+            ->with('success', 'Evaluation deleted successfully');
     }
 }

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('anuals', function (Blueprint $table) {
             $table->id();
+            $table->string('year');
+            $table->integer('year_value');
+            $table->foreignId('funcionario_id')
+            ->constrained('funcionarios')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

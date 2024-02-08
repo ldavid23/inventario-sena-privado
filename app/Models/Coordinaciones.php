@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Coordinaciones extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'coordinacion',
+        'user_id'
+    ];
+
 }

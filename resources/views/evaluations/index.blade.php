@@ -1,4 +1,11 @@
-<h1>HOLA INDEX</h1>
+@extends('layouts.app')
+
+@section('content')
+
+@endsection
+
+
+{{-- <h1>HOLA INDEX</h1>
 
 @if ($evaluations->isEmpty())
     <h2>No se encontraron evaluaciones registradas</h2>
@@ -42,4 +49,4 @@
   const editEvaluation = (evaluationId) => {
     window.location.href = `/evaluations/${evaluationId}`
   }
-</script>
+</script> --}}

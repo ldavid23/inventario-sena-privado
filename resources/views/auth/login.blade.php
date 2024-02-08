@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Seguimiento | CNCA </title>
+    <title>SEGUIMIENTO | CNCA </title>
     <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/sweetalert2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.min.css') }}">
+
+    
 
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
 
@@ -35,14 +37,15 @@
 
                         <div class="input-with-icon input-content">
                             <label for="email" id="email" class="form-label">Usuario</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Usuario">
+                            <input id="email" type="number" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  placeholder="Usuario" required>
                             <i class="bi bi-person"></i>
+
 
                         </div>
 
                         <div class="input-with-icon input-content">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"placeholder="Contraseña">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="Contraseña" required>
                             <i class="bi bi-unlock"></i>
                         </div>
 

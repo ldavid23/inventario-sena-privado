@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('mensuals', function (Blueprint $table) {
             $table->id();
+            $table->string('month');
+            $table->integer('month_value');
+            $table->foreignId('funcionario_id')
+            ->constrained('funcionarios')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -126,10 +126,12 @@ input[type="submit"] {
     border: 1px solid #fff;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 100;
+    font-size: 15px;
     font-weight: bold;
     display: flex;
     justify-content: center;
+    transition: background-color 0.9s ease; /* Transición suave */
+
 }
 
 input[type="submit"]:hover {
@@ -137,6 +139,17 @@ input[type="submit"]:hover {
     color: #39a900;
     border: 1px solid #39a900;
 }
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+
+}
+
 
 @media only screen and (max-width: 854px) {
     .banner .container {

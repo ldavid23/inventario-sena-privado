@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>SEGUIMIENTO | CNCA </title>
+
+
     <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <!-- Bootstrap Style -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -16,78 +19,60 @@
     <script src="{{ asset('js/sweetalert2.js') }}"></script>
     <!-- DataTablets Style -->
     <link rel="stylesheet" href="{{ asset('css/datatables.css') }}">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+    <header>
+        <img src="{{ asset('img/logoSena.png') }}" alt="Logo de la empresa" class="logo">
+
+        <h1>APP SEGUIMIENTO CNCA</h1>
+
+        <div class="navigetion ">
+
+            <a href="{{route('coordinators')}}">Coordinaciones</a>
+            <a href="{{route('funcionarios')}}">Funcionarios</a>
+            <a href="">Distribucion</a>
+            <a href="">Evaluaciones</a>
+            <a href="">Reporte</a>
+
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                        {{ __('Logout') }}
+                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
-            </div>
-        </nav>
+            </li>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+        </div>
+
+    </header>
+
+    <main>
+
+        @yield('content')
+    </main>
+
+
 
     <!--Script-->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
-    {{-- <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script> --}}
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

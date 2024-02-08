@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('evaluaciones', function (Blueprint $table) {
             $table->id();
+            $table->date('evaluation_date');
+            $table->string('evaluation_month');
+            $table->integer('workplan');
+            $table->integer('partials');
+            $table->integer('finals');
+            $table->integer('extraordinary');
+            $table->foreignId('funcionario_id')
+            ->constrained('funcionarios')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
