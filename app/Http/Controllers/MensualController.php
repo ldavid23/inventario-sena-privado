@@ -16,7 +16,10 @@ class MensualController extends Controller
      */
     public function index()
     {
-        //
+        $mensuales = Mensual::all();
+
+        return view('mensual.index', compact('mensuales'));
+
     }
 
     /**

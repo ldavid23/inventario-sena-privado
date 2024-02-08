@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Anual extends Model
 {
     use HasFactory;
+
+    
 }

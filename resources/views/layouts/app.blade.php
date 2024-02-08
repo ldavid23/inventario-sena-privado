@@ -40,12 +40,12 @@
                     Asignaciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                    <a class="dropdown-item" href="#">Mensuales</a>
-                    <a class="dropdown-item" href="#">Anuales</a>
+                    <a class="dropdown-item" href="{{route('Mensual')}}">Mensuales</a>
+                    <a class="dropdown-item" href="{{route('anual')}}">Anuales</a>
                 </div>
             </div>
 
-            <a href="">Evaluaciones</a>
+            <a href="{{route('evaluations')}}">Evaluaciones</a>
             <a href="">Reporte</a>
 
             <li class="nav-item dropdown">
