@@ -23,12 +23,7 @@
             <h4 class="fs-5 m-2">SERVICIO NACIONAL DE APRENDIZAJE</h4>
         </div>
     </header>
-    <center>
-        <main class="main card-container">
-            <section class="carding">
-                <img src="{{ asset('img/Ilustracion.svg') }}" alt="">
-            </section>
-
+        <main class="card-container">
             <section class="card form">
                 <div class="form-title">
                     <h4>CENTRO NACIONAL COLOMBO ALEMAN</h4>
@@ -54,9 +49,9 @@
 
                         <div class="input-button">
                             {{-- <input type="submit" value="INGRESAR"> --}}
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit" class="btn btn-primary ">
 
-                           
+
                         </div>
 
 
@@ -75,7 +70,7 @@
             });
         </script>
     @endif
-    </center>
+    {{-- </center> --}}
 
 </body>
 

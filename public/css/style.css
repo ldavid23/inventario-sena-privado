@@ -26,39 +26,21 @@ img {
     margin: 0px 10px;
 }
 
-
 .card-container {
+    padding-left: calc(100% - 75%);
     height: 450px;
     width: 50%;
     display: flex;
-    justify-content: center; /*uniformemente */
-    margin-top: 250px;
-    
-    
-
-}
-
-.carding {
-    border-radius: 10px 0px 0px 10px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1),
-        -2px 2px 4px rgba(0, 0, 0, 0.1), 2px -2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0px; /*  margen entre las tarjetass */
-    flex: 1;
-}
-
-section > img {
-    position: relative;
-    padding: 10px;
-    top: 40px;
-    width: 550px;
+    justify-content: center;
+    margin-top: 150px;
 }
 
 .form {
-    border-radius: 0px 10px 10px 0px;/*  margen entre las tarjetass */
+    border-radius: 10px;
     position: relative;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1),
-    -2px 2px 4px rgba(0, 0, 0, 0.1), 2px -2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0px; 
+        -2px 2px 4px rgba(0, 0, 0, 0.1), 2px -2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px 0px 0px 0px;
     background: linear-gradient(
         180deg,
         #39a900 0%,
@@ -70,8 +52,8 @@ section > img {
     padding: 20px;
 }
 
-
-.form-title, section > h4{
+.form-title,
+section > h4 {
     margin: 10px 10px;
     background: transparent;
     color: #fff;
@@ -80,22 +62,21 @@ section > img {
     font-weight: bolder;
 }
 
-h4 ~ p{
+h4 ~ p {
     font-size: 15px;
     font-weight: bold;
-    margin-top: -10px
-
+    margin-top: -10px;
 }
 
-.form-label{
+.form-label {
     color: #fff;
     font-size: 100;
     font-weight: bold;
 }
 
-.input-content{
+.input-content {
     top: 20px;
-   padding: 5px;
+    padding: 5px;
 }
 
 .input-with-icon {
@@ -103,7 +84,7 @@ h4 ~ p{
 }
 
 .input-with-icon input {
-    width: calc(100% - 30px);
+    width: 100%;
     padding: 10px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -116,11 +97,10 @@ h4 ~ p{
     outline: none;
 }
 
-
 .input-with-icon i {
     position: absolute;
     top: 70%;
-    right: 40px;
+    right: 10px;
     transform: translateY(-70%);
     font-size: 25px;
     font-weight: bold;
@@ -128,14 +108,14 @@ h4 ~ p{
 }
 
 .input-button {
-    position: relative;
+    position: absolute;
+    top: 75%;
+    left: calc(100% - 72%);
     width: calc(100% - 30px);
     padding: 10px;
-    margin: 30px 0 0 0;
     box-sizing: border-box;
     border-radius: 10px;
     padding-right: 30px;
-    
 }
 
 input[type="submit"] {
@@ -150,20 +130,15 @@ input[type="submit"] {
     font-weight: bold;
     display: flex;
     justify-content: center;
-    
 }
 
-
-
-input[type="submit"]:hover{
+input[type="submit"]:hover {
     background: #fff;
     color: #39a900;
     border: 1px solid #39a900;
 }
 
-
-@media only screen and (max-width: 767px) {
-
+@media only screen and (max-width: 854px) {
     .banner .container {
         height: 50px;
         display: flex;
@@ -172,21 +147,9 @@ input[type="submit"]:hover{
         box-shadow: 0 10px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .card-container {
-        display:block;
-        height: 450px;
-        width: 70%;
-        justify-content: center; /*uniformemente */
-        /* margin: 150px 220px 0px 170px; */
-        margin-top: 150px;
-        
-    }
-
-    
-
     .form {
         position: relative;
-        border-radius:  0px 0px 10px 10px; /* redondea solo los bordes del lado derecho */
+        border-radius: 10px 10px 10px 10px; /* redondea solo los bordes del lado derecho */
         background: linear-gradient(
             180deg,
             #39a900 0%,
@@ -196,34 +159,114 @@ input[type="submit"]:hover{
             rgba(57, 169, 0, 0) 100%
         );
         padding: 20px;
-        height: 370px;
+        height: 300px;
     }
 
     h4 {
         margin-left: 0px;
+        font-size: 12px;
+    }
+
+    h4 ~ p {
         font-size: 10px;
+        font-weight: bold;
+        margin-top: -10px;
     }
 
     .banner img {
-        max-width: 35px;
+        max-width: 50px;
         margin: 10px;
     }
- 
-    .carding {
-        border-radius: 10px 10px 0px 0px;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1),
-            -2px 2px 4px rgba(0, 0, 0, 0.1), 2px -2px 4px rgba(0, 0, 0, 0.1);
-        margin: 0px; /*  margen entre las tarjetass */
-        flex: 1;
+
+    header .container h4{
+        font-size: 15px;
+        width: 100%;
     }
 
-    .carding img {
-        width: 90%;
-        height: auto;
-        margin-bottom: 60px;
-        top: 1;
-        
+    .form-label {
+        font-size: 14px;
     }
 
+
+    .input-with-icon{
+        padding: 2px;
+    }
+
+    .input-button {
+        position: absolute;
+        top: 75%;
+        left: 30%;
+    }
+
+    input[type="submit"] {
+        top: 60px;
+        padding: 10px 30px;
+        font-size: 12px;
+    }
+
+    .input-with-icon input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding-right: 30px;
+    }
+
+    .input-with-icon i {
+        font-size: 15px;
+    }
 
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    header .container h4{
+        font-size: 12px;
+        width: 100%;
+    }
+
+
+    .card-container{
+        position: relative;
+        width: 80%;
+       padding-left: 30px;
+    }
+    .form-label {
+        font-size: 10px;
+    }
+
+
+    .input-with-icon{
+        padding: 2px;
+    }
+
+    .input-button {
+        position: absolute;
+        top: 75%;
+    }
+
+    input[type="submit"] {
+        top: 30px;
+        padding: 10px 30px;
+        font-size: 12px;
+    }
+
+    .input-with-icon input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding-right: 30px;
+    }
+
+    .input-with-icon i {
+        font-size: 15px;
+    }
+
+}
+
