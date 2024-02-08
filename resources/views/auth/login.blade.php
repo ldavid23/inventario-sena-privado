@@ -28,39 +28,53 @@
             <section class="carding">
                 <img src="{{ asset('img/Ilustracion.svg') }}" alt="">
             </section>
-    
+
             <section class="card form">
                 <div class="form-title">
                     <h4>CENTRO NACIONAL COLOMBO ALEMAN</h4>
                     <p>SEGUIMIENTO DE INSTRUCTORES</p>
                 </div>
                 <div class="form-content">
-                    <form action="" method="post">
+                    <form method="POST" action="{{ route('login') }}"class="mt-3 login needs-validation" novalidate>
+                    @csrf
+
                         <div class="input-with-icon input-content">
-                            <label for="" class="form-label">Usuario</label>
-                            <input type="text" placeholder="Usuario">
+                            <label for="email" id="email" class="form-label">Usuario</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Usuario">
                             <i class="bi bi-person"></i>
-    
+
                         </div>
-    
+
                         <div class="input-with-icon input-content">
-                            <label for="" class="form-label">Contraseña</label>
-                            <input type="text" placeholder="Contraseña">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"placeholder="Contraseña">
                             <i class="bi bi-unlock"></i>
                         </div>
 
-                        
+
                         <div class="input-button">
-                            <input type="submit" value="INGRESAR">
+                            {{-- <input type="submit" value="INGRESAR"> --}}
+                            <input type="submit" class="btn btn-primary">
+
+                           
                         </div>
-                    
+
 
                     </form>
-    
-    
+
+
                 </div>
             </section>
-        </main>   
+        </main>
+        @if (isset($errors) && $errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Usuario no Encontrado',
+                text: 'Número de identificación o clave incorrectos!',
+            });
+        </script>
+    @endif
     </center>
 
 </body>
