@@ -75,7 +75,7 @@ Route::post('/coordinators', [App\Http\Controllers\CoordinacionesController::cla
 Route::post('/coordinators/{id}', [App\Http\Controllers\CoordinacionesController::class, 'update'])->name('coordinators.update');
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
-Route::delete('/coordinators/{id}', [App\Http\Controllers\CoordinacionesController::class, 'destroy'])->name('coordinators.destroy');
+Route::post('/coordinator/{id}', [App\Http\Controllers\CoordinacionesController::class, 'destroy'])->name('coordinators.destroy');
 
 /*
 |--------------------------------------------------------------------------

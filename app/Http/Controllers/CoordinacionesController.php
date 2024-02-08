@@ -76,10 +76,13 @@ class CoordinacionesController extends Controller
     public function destroy($id)
     {
         // Delete - Remove an item from the database
-        $coordinator = Coordinaciones::find($id);
-        $coordinator->delete();
+        $coordinator = Coordinaciones::find($id)->delete();
 
-        return redirect()->route('coordinators.index')
+        return redirect()->route('coordinators')
             ->with('success', 'Coordinator deleted successfully');
+
+        return response()->json($id);
+
+
     }
 }

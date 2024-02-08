@@ -63,15 +63,16 @@
                     <tr>
                         <td>{{ $coordinator->coordinacion }}</td>
                         <td>{{ $coordinator->encargado }}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning btn-sm fw-semibold"
+                        <td class="d-flex">
+                            <button type="button" class="btn btn-warning btn-sm fw-semibold me-2"
                                 data-bs-toggle="modal" data-bs-target="#edit{{ $coordinator->id }}">
                                 Editar <i class="bi bi-pencil-square"></i>
                             </button>
-
-                            <a href="#" class="btn btn-danger btn-sm fw-semibold"
-                                onclick="alerta('{{ $coordinator->email }}')">Eliminar <i
-                                    class="bi bi-trash3"></i></a>
+                            <form id="eliminarForm" action="{{ route('coordinators.destroy', $coordinator->id) }}" method="POST">
+                                @csrf
+                                <button type="button" class="btn btn-danger modificar btn-sm" id="editarBtn">Eliminar <i
+                                    class="bi bi-trash3"></i> </button>
+                              </form>
                         </td>
                     </tr>
                     @include('coordinators.edit')

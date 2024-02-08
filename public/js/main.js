@@ -50,15 +50,7 @@ new DataTable('.table-datatable', {
 });
 
 
-/*
-<form id="eliminarForm" action="/EliminarFuncionario" method="POST">
-  @csrf
-  <input type="hidden" name="id" id="idInput" value="{{$row->id}}">
 
-  <button type="button" class="btn btn-btn-general modificar" id="editarBtn">Editar</button>
-</form>
-
-<script>
   document.getElementById('editarBtn').addEventListener('click', function(event) {
     alerta();
   });
@@ -76,10 +68,7 @@ new DataTable('.table-datatable', {
       }
     });
   };
-</script>
-</script>
 
-*/
 
 
 
