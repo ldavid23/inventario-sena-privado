@@ -80,3 +80,14 @@ new DataTable('.table-datatable', {
 </script>
 
 */
+
+
+
+var modalId = document.getElementsByClassName('modal');
+
+modalId.addEventListener('show.bs.modal', function(event) {
+    let button = event.relatedTarget;
+    let recipient = button.getAttribute('data-bs-whatever');
+});
+
+

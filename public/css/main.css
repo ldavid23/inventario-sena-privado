@@ -39,15 +39,16 @@ header > h1,
 }
 
 .nav-item > a,
-.navigetion > a {
+.navigetion > a , .dropdown > a, .dropdown-menu > a{
     text-decoration: none;
     color: grey;
     font-size: 16px;
     margin: 10px;
 }
 
-.navigetion > a:hover,  .nav-item > a:hover {
+.navigetion > a:hover,  .nav-item > a:hover, .dropdown > a:hover, .dropdown-menu > a:hover {
     color: #39a900;
+    background: none;
 }
 
 h1 {
@@ -142,13 +143,11 @@ hr{
     }
 }
 
-/**/
 
-input[type="number"] {
-    -moz-appearance: textfield; /* Firefox */
-}
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
+
+

@@ -31,10 +31,20 @@
         <h1>APP SEGUIMIENTO CNCA</h1>
 
         <div class="navigetion ">
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('coordinators') }}">Coordinaciones</a>
+            <a href="{{ route('funcionarios') }}">Funcionarios</a>
+            <div class="dropdown open">
+                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Asignaciones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="#">Mensuales</a>
+                    <a class="dropdown-item" href="#">Anuales</a>
+                </div>
+            </div>
 
-            <a href="{{route('coordinators')}}">Coordinaciones</a>
-            <a href="{{route('funcionarios')}}">Funcionarios</a>
-            <a href="">Distribucion</a>
             <a href="">Evaluaciones</a>
             <a href="">Reporte</a>
 
@@ -73,6 +83,8 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/datatables.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 
 </html>

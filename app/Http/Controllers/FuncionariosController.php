@@ -12,7 +12,7 @@ class FuncionariosController extends Controller
         // Read - Display a list of items
         $instructors = Funcionarios::all();
 
-        return view('instructors.index', compact('instructors'));
+        return view('funcionarios.index', compact('instructors'));
     }
 
     public function create()
