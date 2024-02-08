@@ -9,6 +9,7 @@ class Anual extends Model
 {
     use HasFactory;
 
+
     static $rules = [
         'year' => 'required',
         'year_value' => 'required',
@@ -26,3 +27,4 @@ class Anual extends Model
         return $this->hasOne('App\Models\Funcionarios', 'id', 'funcionario_id');
     }
 }
+
