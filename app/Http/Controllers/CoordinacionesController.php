@@ -81,8 +81,5 @@ class CoordinacionesController extends Controller
         return redirect()->route('coordinators')
             ->with('success', 'Coordinator deleted successfully');
 
-        return response()->json($id);
-
-
     }
 }

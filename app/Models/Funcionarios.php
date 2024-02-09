@@ -10,25 +10,29 @@ class Funcionarios extends Model
     use HasFactory;
 
     static $rules = [
-        'email' => 'required',
-        'telephone' => 'required',
         'start_date'  => 'required',
         'close_date' => 'required',
         'user_id' => 'required',
-        'coordinator_id' => 'required',
+        'coordinacion_id' => 'required',
     ];
 
-    protected $fillabe = [
+    protected $fillable = [
         'email',
         'telephone',
-        'start_date' ,
+        'start_date',
         'close_date',
         'user_id',
-        'coordinator_id',
+        'coordinacion_id',
     ];
 
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+
+    public function coordinaciones()
+    {
+        return $this->belongsTo('App\Models\Coordinaciones', 'coordinacion_id', 'id');
     }
 }

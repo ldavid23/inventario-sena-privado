@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coordinaciones;
 use App\Models\Funcionarios;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class FuncionariosController extends Controller
 {
     public function __construct()
@@ -13,77 +14,100 @@ class FuncionariosController extends Controller
     }
     public function index()
     {
-        // Read - Display a list of items
-        $instructors = Funcionarios::all();
 
-        return view('funcionarios.index', compact('instructors'));
-    }
+        $funcionarios = Funcionarios::all();
+        $coordinaciones = Coordinaciones::all();
 
-    public function create()
-    {
-        // Create - Show the form to create a new item
-        return view('instructors.create');
-    }
-
-    public function show($id)
-    {
-        // Read - Display a single item
-        $instructor = Funcionarios::find($id);
-
-        return view('instructors.show', compact('instructor'));
-    }
-
-    public function edit($id)
-    {
-        // Update - Show the form to edit an item
-        $instructor = Funcionarios::find($id);
-
-        return view('instructors.edit', compact('instructor'));
+        return view('funcionarios.index', compact('funcionarios', 'coordinaciones'));
     }
 
     public function store(Request $request)
     {
-        // Create - Save a new item to the database
         $request->validate([
-            'email' => 'required|email',
-            'telephone' => 'required|numeric',
+            'nombre' => 'required',
+            'email' => 'required',
+            'coordinacion_id' => 'required|numeric',
             'start_date' => 'required|date',
             'close_date' => 'required|date',
-            'user_id' => 'required|numeric',
-            'coordinator_id' => 'required|numeric',
         ]);
 
-        Funcionarios::create($request->all());
 
-        return redirect()->route('instructors.index')
-            ->with('success', 'Instructor created successfully.');
+        $userExisr = User::where('email', $request->email)->first();
+        if (!$userExisr) {
+
+            $usuario = User::factory()->create([
+                'name' => $request->nombre,
+                'email' => $request->email,
+                'password' => bcrypt($request->email),
+            ]);
+
+            $user = User::where('email', $request->email)->first();
+
+
+            $funcionario = Funcionarios::create([
+                'start_date' => $request->start_date,
+                'close_date' => $request->close_date,
+                'user_id' => $user->id,
+                'coordinacion_id' => $request->coordinacion_id
+
+            ]);
+
+            return redirect()->route('funcionarios') ->with('success', 'Funcionario Registrado');
+
+        }else{
+            return redirect()->route('funcionarios')
+            ->with('error', 'Coordinacion Regisrada');
+        }
+
     }
 
     public function update(Request $request, $id)
     {
-        // Update - Save the edited item to the database
         $request->validate([
-            'email' => 'email',
-            'telephone' => 'numeric',
-            'start_date' => 'date',
-            'close_date' => 'date',
-            'user_id' => 'numeric',
-            'coordinator_id' => 'numeric',
+            'nombre' => 'required',
+            'email' => 'required',
+            'coordinacion_id' => 'required|numeric',
+            'start_date' => 'required|date',
+            'close_date' => 'required|date',
         ]);
-        $instructor = Funcionarios::find($id);
-        $instructor->update($request->all());
 
-        return redirect()->route('instructors.index')
-            ->with('success', 'Instructor updated successfully.');
+        $funcionario = Funcionarios::where('id',$id)->first();
+
+        $userExis = User::where('email', $request->email)->where('id' , '!=', $funcionario->user_id)->first();
+
+        // return response()->json($userExis);
+
+        if (!$userExis) {
+            $funcionario = Funcionarios::where('id', '=', $id)->update([
+                'start_date' => $request->start_date,
+                'close_date' => $request->close_date,
+                'coordinacion_id' => $request->coordinacion_id
+            ]);
+
+            $funcionario = Funcionarios::where('id',$id)->first();
+
+
+            $user = User::where('id', $funcionario->user_id)
+            ->update([
+                'name' => $request->nombre,
+                'email' => $request->email,
+                'password' => bcrypt($request->email),
+            ]);
+
+            return redirect()->route('funcionarios') ->with('success', 'Informacion Actualizada');
+
+        }else{
+            return redirect()->route('funcionarios')
+            ->with('error', 'Identificacion Regisrada');
+        }
     }
 
     public function destroy($id)
     {
-        // Delete - Remove an item from the database
-        $instructor = Funcionarios::find($id);
-        $instructor->delete();
+        $funcionario = Funcionarios::find($id)->delete();
 
-        return redirect()->route('instructors.index')
-            ->with('success', 'Instructor deleted successfully');
+        return redirect()->route('funcionarios')
+            ->with('success', 'Funcionario Eliminado');
+
     }
 }

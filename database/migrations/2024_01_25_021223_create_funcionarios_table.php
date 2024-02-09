@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('telephone');
             $table->date('start_date');
             $table->date('close_date');
             $table->foreignId('user_id')
             ->constrained('users')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->foreignId('coordinator_id')
+            $table->foreignId('coordinacion_id')
             ->constrained('coordinaciones')
             ->onUpdate('cascade')
             ->onDelete('cascade');

@@ -46,7 +46,6 @@
             </div>
 
             <a href="{{route('evaluations')}}">Evaluaciones</a>
-            <a href="">Reporte</a>
 
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
