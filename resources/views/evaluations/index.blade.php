@@ -73,4 +73,18 @@
 
     </div>
 </div>
+
+@if ($message = Session::get('success'))
+<script>
+    Swal.fire('Proceso finalizado correctamente!')
+</script>
+@elseif ($message = Session::get('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error de registro...',
+        text: '{{ $message }}',
+    })
+</script>
+@endif
 @endsection

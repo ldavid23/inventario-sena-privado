@@ -108,10 +108,10 @@ Route::get('/anual', [App\Http\Controllers\AnualController::class, 'index'])->na
 Route::post('/anual', [App\Http\Controllers\AnualController::class, 'store'])->name('anual.post');
 
 //Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
-Route::put('/anual/{id}', [App\Http\Controllers\AnualController::class, 'update'])->name('anual.update');
+Route::post('/anuals/{id}', [App\Http\Controllers\AnualController::class, 'update'])->name('anual.update');
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
-Route::delete('/anual/{id}', [App\Http\Controllers\AnualController::class, 'destroy'])->name('anual.destroy');
+Route::post('/anual/{id}', [App\Http\Controllers\AnualController::class, 'destroy'])->name('anual.destroy');
 
 
 

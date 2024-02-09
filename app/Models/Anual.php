@@ -21,10 +21,9 @@ class Anual extends Model
         'year_value',
         'funcionario_id',
     ];
-
-    public function funcionario()
+    public function funcionarios()
     {
-        return $this->hasOne('App\Models\Funcionarios', 'id', 'funcionario_id');
+        return $this->belongsTo('App\Models\Funcionarios', 'funcionario_id' , 'id');
     }
 }
 

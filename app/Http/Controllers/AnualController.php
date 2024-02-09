@@ -18,46 +18,60 @@ class AnualController extends Controller
     public function index()
     {
         $anuals = Anual::all();
-        $funcionario=Funcionarios::all();
-        $names=User::select('name')->where('id','=','funcionarios.user_id')->get();
-
-        return view('anual.index', compact('anuals','funcionario','names'));
-    }
-
-
-    public function create()
-    {
-
+        $funcionarios=Funcionarios::all();
+        return view('anual.index', compact('anuals','funcionarios'));
     }
 
 
     public function store(Request $request)
     {
-      
+        request()->validate(Anual::$rules);
+
+        $vaidate = Anual::where('funcionario_id', '=', $request->funcionario_id)->where('year', '=', $request->year)->first();
+
+        if (!$vaidate) {
+
+            $asignacion = Anual::create($request->all());
+
+            return redirect()->route('anual')
+                ->with('success', 'Proceso Terminado Con Exito!');
+        } else {
+
+            return redirect()->route('anual')
+                ->with('error', 'Este Instructor Ya Tiene Asignacion!');
+        }
 
     }
 
-
-    public function show(Anual $anual)
+    public function update(Request $request, $id)
     {
+        request()->validate(Anual::$rules);
 
+        $vaidate = Anual::where('funcionario_id', '=', $request->funcionario_id)->where('year', '=', $request->year)->where('id', '!=', $id)->first();
+
+        if (!$vaidate) {
+            $asignacion = Anual::where('id', '=', $id)->update([
+                'year' => $request->year,
+                'year_value' => $request->year_value,
+                'funcionario_id'  => $request->funcionario_id,
+            ]);
+
+            return redirect()->route('anual')
+                ->with('success', 'Proceso Terminado Con Exito!');
+        } else {
+
+            return redirect()->route('anual')
+                ->with('error', 'Este Instructor Ya Tiene Asignacion!');
+        }
     }
 
 
-    public function edit(Anual $anual)
-    {
+    public function destroy($id)
 
-    }
+        {
+            $coordinator = Anual::find($id)->delete();
 
-
-    public function update(Request $request, Anual $anual)
-    {
-
-    }
-
-
-    public function destroy(Anual $anual)
-    {
-
+            return redirect()->route('anual')
+            ->with('success', 'Proceso Terminado Con Exito!');
     }
 }

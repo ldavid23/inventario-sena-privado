@@ -65,7 +65,7 @@
 
     @if ($message = Session::get('success'))
         <script>
-            Swal.fire('{{ $message }}')
+            Swal.fire('Proceso finalizado correctamente!')
         </script>
     @elseif ($message = Session::get('error'))
         <script>
