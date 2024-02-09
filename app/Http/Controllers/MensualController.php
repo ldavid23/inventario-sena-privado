@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mensual;
 use Illuminate\Http\Request;
+use App\Models\Funcionarios;
 
 class MensualController extends Controller
 {
@@ -11,62 +12,62 @@ class MensualController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $mensuales = Mensual::all();
-
-        return view('mensual.index', compact('mensuales'));
-
+        $funcionarios = Funcionarios::all();
+        return view('mensual.index', compact('mensuales', 'funcionarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        request()->validate(Mensual::$rules);
+
+        $vaidate = Mensual::where('funcionario_id', '=', $request->funcionario_id)->where('month', '=', $request->month)->first();
+
+        if (!$vaidate) {
+
+            $asignacion = Mensual::create($request->all());
+
+            return redirect()->route('mensual')
+                ->with('success', 'Proceso Terminado Con Exito!');
+        } else {
+
+            return redirect()->route('mensual')
+                ->with('error', 'Este Instructor Ya Tiene Asignacion!');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Mensual $mensual)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate(Mensual::$rules);
+
+        $vaidate = Mensual::where('funcionario_id', '=', $request->funcionario_id)->where('month', '=', $request->month)->where('id', '!=', $id)->first();
+
+        if (!$vaidate) {
+            $asignacion = Mensual::where('id', '=', $id)->update([
+                'month' => $request->month,
+                'month_value' => $request->month_value,
+                'funcionario_id'  => $request->funcionario_id,
+            ]);
+
+            return redirect()->route('mensual')
+                ->with('success', 'Proceso Terminado Con Exito!');
+        } else {
+
+            return redirect()->route('mensual')
+                ->with('error', 'Este Instructor Ya Tiene Asignacion!');
+        }
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Mensual $mensual)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Mensual $mensual)
+    public function destroy($id)
     {
-        //
-    }
+        $coordinator = Mensual::find($id)->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Mensual $mensual)
-    {
-        //
+        return redirect()->route('mensual')
+        ->with('success', 'Proceso Terminado Con Exito!');
     }
 }

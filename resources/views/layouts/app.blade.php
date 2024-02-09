@@ -40,7 +40,7 @@
                     Asignaciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                    <a class="dropdown-item" href="{{route('Mensual')}}">Mensuales</a>
+                    <a class="dropdown-item" href="{{route('mensual')}}">Mensuales</a>
                     <a class="dropdown-item" href="{{route('anual')}}">Anuales</a>
                 </div>
             </div>

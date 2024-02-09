@@ -74,26 +74,25 @@ Route::post('/funcionarios/{id}', [App\Http\Controllers\FuncionariosController::
 Route::post('/funcionario/{id}', [App\Http\Controllers\FuncionariosController::class, 'destroy'])->name('funcionarios.destroy');
 
 
+
+
 /*
 |--------------------------------------------------------------------------
-| evaluaciones Path 👍
+| Mensual Path 👍
 |--------------------------------------------------------------------------
 */
 
 //Esta es la tabla que pinta el listado de evaluaciones que ya se han creado en la base de datos (dos botones, editar -> te lleva a la vista y eliminar -> elimina el elemento)
-Route::get('/evaluations', [App\Http\Controllers\EvaluacionesController::class, 'index'])->name('evaluations');
-
-//Esta ruta sirve para leer una evaluacion y cargar la vista de editar
-// Route::get('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'edit'])->name('evaluations.edit');
+Route::get('/Mensual', [App\Http\Controllers\MensualController::class, 'index'])->name('mensual');
 
 //Esta ruta es para almacenar una evaluacion en la base de datos que luego sera mostrada en la vista de la linea 24
-Route::post('/evaluations', [App\Http\Controllers\EvaluacionesController::class, 'store'])->name('evaluations.post');
-
+Route::post('/Mensual', [App\Http\Controllers\MensualController::class, 'store'])->name('mensual.post');
 //Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
-Route::put('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'update'])->name('evaluations.update');
+Route::post('/Mensuals/{id}', [App\Http\Controllers\MensualController::class, 'update'])->name('mensual.update');
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
-Route::delete('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'destroy'])->name('evaluations.destroy');
+Route::post('/Mensual/{id}', [App\Http\Controllers\MensualController::class, 'destroy'])->name('mensual.destroy');
+
 
 
 /*
@@ -114,22 +113,26 @@ Route::put('/anual/{id}', [App\Http\Controllers\AnualController::class, 'update'
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
 Route::delete('/anual/{id}', [App\Http\Controllers\AnualController::class, 'destroy'])->name('anual.destroy');
 
+
+
+
 /*
 |--------------------------------------------------------------------------
-| Mensual Path 👍
+| evaluaciones Path 👍
 |--------------------------------------------------------------------------
 */
 
 //Esta es la tabla que pinta el listado de evaluaciones que ya se han creado en la base de datos (dos botones, editar -> te lleva a la vista y eliminar -> elimina el elemento)
-Route::get('/Mensual', [App\Http\Controllers\MensualController::class, 'index'])->name('Mensual');
+Route::get('/evaluations', [App\Http\Controllers\EvaluacionesController::class, 'index'])->name('evaluations');
+
+//Esta ruta sirve para leer una evaluacion y cargar la vista de editar
+// Route::get('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'edit'])->name('evaluations.edit');
 
 //Esta ruta es para almacenar una evaluacion en la base de datos que luego sera mostrada en la vista de la linea 24
-Route::post('/Mensual', [App\Http\Controllers\MensualController::class, 'store'])->name('Mensual.post');
+Route::post('/evaluations', [App\Http\Controllers\EvaluacionesController::class, 'store'])->name('evaluations.post');
 
 //Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
-Route::put('/Mensual/{id}', [App\Http\Controllers\MensualController::class, 'update'])->name('Mensual.update');
+Route::put('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'update'])->name('evaluations.update');
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
-Route::delete('/Mensual/{id}', [App\Http\Controllers\MensualController::class, 'destroy'])->name('Mensual.destroy');
-
-
+Route::delete('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'destroy'])->name('evaluations.destroy');
