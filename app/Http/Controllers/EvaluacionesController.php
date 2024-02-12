@@ -102,4 +102,51 @@ class EvaluacionesController extends Controller
         return redirect()->route('evaluations')
             ->with('success', 'Evaluation deleted successfully');
     }
+
+
+
+
+
+
+    public function show()
+    {
+        $evaluaciones = Evaluaciones::all();
+        $funcionarios = Funcionarios::all();
+        return view('evaluations.create', compact('evaluaciones', 'funcionarios'));
+    }
+
+
+
+    public function generar(Request $request)
+    {
+        $fechas = json_decode($request->input('fechas_generadas'));
+
+        foreach ($fechas as $fecha) {
+            // Convert each date string to a Carbon date object
+            $carbonDate = Carbon::createFromFormat('Y-m-d', $fecha);
+
+            // Get the month name from the Carbon date object
+            $nombre_mes = $carbonDate->format('F');
+
+            // Create a new Evaluaciones instance and save it to the database
+            $nuevaFecha = new Evaluaciones();
+            $nuevaFecha->funcionario_id = 1;
+            $nuevaFecha->evaluation_date = $fecha;
+            $nuevaFecha->evaluation_month = $nombre_mes;
+            $nuevaFecha->workplan = 0;
+            $nuevaFecha->partials = 0;
+            $nuevaFecha->finals = 0;
+            $nuevaFecha->extraordinary = 0;
+            $nuevaFecha->save();
+        }
+
+        // return response()->json(['message' => 'Fechas guardadas exitosamente']);
+
+
+        return redirect()->route('mostrar-fechas')
+        ->with('success', 'Evaluation deleted successfully');
+
+
+    }
+
 }

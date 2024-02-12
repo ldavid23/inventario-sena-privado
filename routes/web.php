@@ -136,3 +136,9 @@ Route::post('/evaluation/{id}', [App\Http\Controllers\EvaluacionesController::cl
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
 Route::post('/evaluations/{id}', [App\Http\Controllers\EvaluacionesController::class, 'destroy'])->name('evaluations.destroy');
+
+
+
+Route::get('/generar-fechas',  [App\Http\Controllers\EvaluacionesController::class, 'show'])->name('mostrar-fechas');
+
+Route::post('/guardar-fechas',  [App\Http\Controllers\EvaluacionesController::class, 'generar'])->name('guardar_fechas');

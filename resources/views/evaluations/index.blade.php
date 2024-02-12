@@ -2,9 +2,9 @@
 @section('content')
     <div class="contenedor">
         <div class="mt-2 text-lg-center">
-            <h4 class="card-title color mb-1 text-lg-center fw-semibold">Coordinaciones - Encargados <i
+            <h4 class="card-title color mb-1 text-lg-center fw-semibold">Control De Evaluaciones <i
                     class="bi bi-building-fill-check"></i></h4>
-            <p class="fw-semibold text-secondary mb-5">Registro y Panel de control de los diferentes coordinaciones</p>
+            <p class="fw-semibold text-secondary mb-5">Registro y Panel de control de los entregas de los diferentes tipos de evaliaciones</p>
         </div>
 
         <div class="m-2">

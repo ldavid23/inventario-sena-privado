@@ -55,7 +55,7 @@
                     <a class="dropdown-item" href="{{ route('coordinators') }}">Coordinaciones</a>
                     <a class="dropdown-item" href="{{ route('funcionarios') }}">Funcionarios</a>
                     <a class="dropdown-item" href="{{ route('evaluations') }}">Evaluaciones</a>
-                    <a class="dropdown-item" href="">Generador De Fechas</a>
+                    <a class="dropdown-item" href="{{route('mostrar-fechas')}}">Generador De Fechas</a>
 
                 </div>
             </div>

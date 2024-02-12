@@ -108,4 +108,10 @@ class FuncionariosController extends Controller
             ->with('success', 'Funcionario Eliminado');
 
     }
+
+
+
+
+
+    
 }
