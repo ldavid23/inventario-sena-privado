@@ -121,7 +121,11 @@ class EvaluacionesController extends Controller
     {
         $fechas = json_decode($request->input('fechas_generadas'));
 
+        $funcionario = json_decode($request->input('funcionario'));
+
+
         foreach ($fechas as $fecha) {
+
             // Convert each date string to a Carbon date object
             $carbonDate = Carbon::createFromFormat('Y-m-d', $fecha);
 
@@ -130,7 +134,7 @@ class EvaluacionesController extends Controller
 
             // Create a new Evaluaciones instance and save it to the database
             $nuevaFecha = new Evaluaciones();
-            $nuevaFecha->funcionario_id = 1;
+            $nuevaFecha->funcionario_id = $funcionario;
             $nuevaFecha->evaluation_date = $fecha;
             $nuevaFecha->evaluation_month = $nombre_mes;
             $nuevaFecha->workplan = 0;
@@ -140,10 +144,7 @@ class EvaluacionesController extends Controller
             $nuevaFecha->save();
         }
 
-        // return response()->json(['message' => 'Fechas guardadas exitosamente']);
-
-
-        return redirect()->route('mostrar-fechas')
+        return redirect()->route('evaluations')
         ->with('success', 'Evaluation deleted successfully');
 
 

@@ -20,6 +20,9 @@
     <!-- DataTablets Style -->
     <link rel="stylesheet" href="{{ asset('css/datatables.css') }}">
 
+    <link rel="stylesheet" href="{{asset('css/fullCalendar.css')}}">
+    <script src="{{asset('js/index.global.min.js')}}"></script>
+
     <!-- Custom Style -->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
@@ -32,19 +35,6 @@
 
         <div class="navigetion ">
             <a href="{{ route('home') }}">Home</a>
-
-
-            <div class="dropdown open">
-                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Asignaciones
-                </a>
-                <div class="dropdown-menu" aria-labelledby="triggerId">
-                    <a class="dropdown-item" href="{{ route('mensual') }}">Mensuales</a>
-                    <a class="dropdown-item" href="{{ route('anual') }}">Anuales</a>
-                </div>
-            </div>
-
 
             <div class="dropdown open">
                 <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -59,6 +49,21 @@
 
                 </div>
             </div>
+
+
+            <div class="dropdown open">
+                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Asignaciones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="{{ route('mensual') }}">Mensuales</a>
+                    <a class="dropdown-item" href="{{ route('anual') }}">Anuales</a>
+                </div>
+            </div>
+
+
+
 
 
             <div class="dropdown open">
