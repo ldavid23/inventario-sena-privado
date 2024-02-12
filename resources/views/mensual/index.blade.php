@@ -102,8 +102,8 @@
                                     <form id="eliminarForm" action="{{ route('mensual.destroy', $row->id) }}"
                                         method="POST">
                                         @csrf
-                                        <button type="button" class="btn btn-danger modificar btn-sm"
-                                            id="editarBtn">Eliminar <i class="bi bi-trash3"></i> </button>
+                                        <button type="submit" class="btn btn-danger modificar btn-sm"
+                                        id="editarBtn">Eliminar <i class="bi bi-trash3"></i> </button>
                                     </form>
                                 </td>
 

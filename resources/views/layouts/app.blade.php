@@ -32,20 +32,43 @@
 
         <div class="navigetion ">
             <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('coordinators') }}">Coordinaciones</a>
-            <a href="{{ route('funcionarios') }}">Funcionarios</a>
+
+
             <div class="dropdown open">
                 <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     Asignaciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                    <a class="dropdown-item" href="{{route('mensual')}}">Mensuales</a>
-                    <a class="dropdown-item" href="{{route('anual')}}">Anuales</a>
+                    <a class="dropdown-item" href="{{ route('mensual') }}">Mensuales</a>
+                    <a class="dropdown-item" href="{{ route('anual') }}">Anuales</a>
                 </div>
             </div>
 
-            <a href="{{route('evaluations')}}">Evaluaciones</a>
+            <div class="dropdown open">
+                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Evaluaciones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="{{ route('evaluations') }}">General</a>
+                    <a class="dropdown-item" href="">Anuales</a>
+                </div>
+            </div>
+
+            <div class="dropdown open">
+                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Generales
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="{{ route('coordinators') }}">Coordinaciones</a>
+                    <a class="dropdown-item" href="{{ route('funcionarios') }}">Funcionarios</a>
+                    <a class="dropdown-item" href="">Generador De Fechas</a>
+
+                </div>
+            </div>
+
 
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

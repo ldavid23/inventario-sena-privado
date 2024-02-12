@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Evaluaciones;
 use Illuminate\Http\Request;
+use App\Models\Funcionarios;
+use Illuminate\Support\Carbon;
 
 class EvaluacionesController extends Controller
 {
@@ -14,69 +16,100 @@ class EvaluacionesController extends Controller
     public function index()
     {
         // Read - Display a list of items
-        $evaluations = Evaluaciones::all();
-
-        return view('evaluations.index', compact('evaluations'));
-    }
-
-    public function create()
-    {
-        // Create - Show the form to create a new item
-        return view('evaluations.create');
-    }
-
-    public function show($id)
-    {
-        // Read - Display a single item
-        $evaluation = Evaluaciones::find($id);
-
-        return view('evaluations.show', compact('evaluation'));
-    }
-
-    public function edit($id)
-    {
-        // Update - Show the form to edit an item
-        $evaluation = Evaluaciones::find($id);
-
-        return view('evaluations.edit', compact('evaluation'));
+        $evaluaciones = Evaluaciones::all();
+        $funcionarios = Funcionarios::all();
+        return view('evaluations.index', compact('evaluaciones', 'funcionarios'));
     }
 
     public function store(Request $request)
     {
         // Create - Save a new item to the database
         $request->validate([
+            'funcionario_id' => 'required|numeric',
             'evaluation_date' => 'required|date',
-            'evaluation_month' => 'required|string',
             'workplan' => 'required|numeric',
             'partials' => 'required|numeric',
             'finals' => 'required|numeric',
             'extraordinary' => 'required|numeric',
-            'instructors_id' => 'required|numeric',
         ]);
 
-        Evaluaciones::create($request->all());
+        // return response()->json($request);
 
-        return redirect()->route('evaluations.index')
-            ->with('success', 'Evaluations created successfully.');
+        $evaluationExis = Evaluaciones::where('funcionario_id', '=', $request->funcionario_id)->where('evaluation_date', '=', $request->evaluation_date)->first();
+
+        if (!$evaluationExis) {
+            // Establecer la localización a español
+            Carbon::setLocale('es');
+
+            // Obtener la fecha de evaluación del formulario
+            $evaluation_date = $request->input('evaluation_date');
+
+            // Crear un objeto Carbon a partir de la fecha ingresada
+            $carbonDate = Carbon::createFromFormat('Y-m-d', $evaluation_date);
+
+            // Obtener el nombre del mes traducido
+            $nombre_mes = $carbonDate->format('F');
+
+            Evaluaciones::create([
+                'funcionario_id' => $request->funcionario_id,
+                'evaluation_date' => $request->evaluation_date,
+                'evaluation_month' => $nombre_mes,
+                'workplan' => $request->workplan,
+                'partials' => $request->partials,
+                'finals' => $request->finals,
+                'extraordinary' => $request->extraordinary,
+            ]);
+
+            return redirect()->route('evaluations')
+                ->with('success', 'Evaluations created successfully.');
+        } else {
+            return redirect()->route('evaluations')
+                ->with('error', 'Evaluations Regisrada');
+        }
     }
 
     public function update(Request $request, $id)
     {
         // Update - Save the edited item to the database
         $request->validate([
-            'evaluation_date' => 'date',
-            'evaluation_month' => 'string',
-            'workplan' => 'numeric',
-            'partials' => 'numeric',
-            'finals' => 'numeric',
-            'extraordinary' => 'numeric',
-            'instructors_id' => 'numeric',
+            'funcionario_id' => 'required|numeric',
+            'evaluation_date' => 'required|date',
+            'workplan' => 'required|numeric',
+            'partials' => 'required|numeric',
+            'finals' => 'required|numeric',
+            'extraordinary' => 'required|numeric',
         ]);
-        $evaluation = Evaluaciones::find($id);
-        $evaluation->update($request->all());
+        $evaluationExis = Evaluaciones::where('funcionario_id', '=', $request->funcionario_id)->where('evaluation_date', '=', $request->evaluation_date)->where('id', '!==', $id)->first();
 
-        return redirect()->route('evaluations.index')
-            ->with('success', 'Evaluation updated successfully.');
+        if (!$evaluationExis) {
+            // Establecer la localización a español
+            Carbon::setLocale('es');
+
+            // Obtener la fecha de evaluación del formulario
+            $evaluation_date = $request->input('evaluation_date');
+
+            // Crear un objeto Carbon a partir de la fecha ingresada
+            $carbonDate = Carbon::createFromFormat('Y-m-d', $evaluation_date);
+
+            // Obtener el nombre del mes traducido
+            $nombre_mes = $carbonDate->format('F');
+
+           $send = Evaluaciones::where('id', '=', $id)->update([
+                'funcionario_id' => $request->funcionario_id,
+                'evaluation_date' => $request->evaluation_date,
+                'evaluation_month' => $nombre_mes,
+                'workplan' => $request->workplan,
+                'partials' => $request->partials,
+                'finals' => $request->finals,
+                'extraordinary' => $request->extraordinary,
+            ]);
+
+            return redirect()->route('evaluations')
+                ->with('success', 'Evaluations created successfully.');
+        } else {
+            return redirect()->route('evaluations')
+                ->with('error', 'Evaluations Regisrada');
+        }
     }
 
     public function destroy($id)
@@ -85,7 +118,7 @@ class EvaluacionesController extends Controller
         $evaluation = Evaluaciones::find($id);
         $evaluation->delete();
 
-        return redirect()->route('evaluations.index')
+        return redirect()->route('evaluations')
             ->with('success', 'Evaluation deleted successfully');
     }
 }

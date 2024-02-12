@@ -50,28 +50,6 @@ new DataTable('.table-datatable', {
 });
 
 
-
-  document.getElementById('editarBtn').addEventListener('click', function(event) {
-    alerta();
-  });
-
-  const alerta = () => {
-    Swal.fire({
-      icon: 'warning',
-      title: '¿Seguro que deseas realizar esta acción?',
-      showCancelButton: true,
-      confirmButtonText: 'OK',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Envía el formulario
-        document.getElementById('eliminarForm').submit();
-      }
-    });
-  };
-
-
-
-
 var modalId = document.getElementsByClassName('modal');
 
 modalId.addEventListener('show.bs.modal', function(event) {

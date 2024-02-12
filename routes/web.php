@@ -132,7 +132,7 @@ Route::get('/evaluations', [App\Http\Controllers\EvaluacionesController::class, 
 Route::post('/evaluations', [App\Http\Controllers\EvaluacionesController::class, 'store'])->name('evaluations.post');
 
 //Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
-Route::put('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'update'])->name('evaluations.update');
+Route::post('/evaluation/{id}', [App\Http\Controllers\EvaluacionesController::class, 'update'])->name('evaluations.update');
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
-Route::delete('/evaluations/{evaluationId}', [App\Http\Controllers\EvaluacionesController::class, 'destroy'])->name('evaluations.destroy');
+Route::post('/evaluations/{id}', [App\Http\Controllers\EvaluacionesController::class, 'destroy'])->name('evaluations.destroy');
