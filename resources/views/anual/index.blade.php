@@ -70,7 +70,7 @@
                     <thead>
                         <tr>
                             <th>Funcionario</th>
-                            <th>Mes</th>
+                            <th>Año</th>
                             <th>Asignacion</th>
                             <th>Funciones</th>
                         </tr>

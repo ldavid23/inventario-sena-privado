@@ -45,16 +45,6 @@
                 </div>
             </div>
 
-            <div class="dropdown open">
-                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    Evaluaciones
-                </a>
-                <div class="dropdown-menu" aria-labelledby="triggerId">
-                    <a class="dropdown-item" href="{{ route('evaluations') }}">General</a>
-                    <a class="dropdown-item" href="">Anuales</a>
-                </div>
-            </div>
 
             <div class="dropdown open">
                 <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -64,10 +54,23 @@
                 <div class="dropdown-menu" aria-labelledby="triggerId">
                     <a class="dropdown-item" href="{{ route('coordinators') }}">Coordinaciones</a>
                     <a class="dropdown-item" href="{{ route('funcionarios') }}">Funcionarios</a>
+                    <a class="dropdown-item" href="{{ route('evaluations') }}">Evaluaciones</a>
                     <a class="dropdown-item" href="">Generador De Fechas</a>
 
                 </div>
             </div>
+
+
+            <div class="dropdown open">
+                <a class="dropdown-toggle" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Reportes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="triggerId">
+                    <a class="dropdown-item" href="">Anuales</a>
+                </div>
+            </div>
+
 
 
             <li class="nav-item dropdown">

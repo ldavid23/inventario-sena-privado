@@ -15,7 +15,6 @@ class EvaluacionesController extends Controller
     }
     public function index()
     {
-        // Read - Display a list of items
         $evaluaciones = Evaluaciones::all();
         $funcionarios = Funcionarios::all();
         return view('evaluations.index', compact('evaluaciones', 'funcionarios'));
@@ -23,7 +22,6 @@ class EvaluacionesController extends Controller
 
     public function store(Request $request)
     {
-        // Create - Save a new item to the database
         $request->validate([
             'funcionario_id' => 'required|numeric',
             'evaluation_date' => 'required|date',
@@ -33,21 +31,13 @@ class EvaluacionesController extends Controller
             'extraordinary' => 'required|numeric',
         ]);
 
-        // return response()->json($request);
 
         $evaluationExis = Evaluaciones::where('funcionario_id', '=', $request->funcionario_id)->where('evaluation_date', '=', $request->evaluation_date)->first();
 
         if (!$evaluationExis) {
-            // Establecer la localización a español
             Carbon::setLocale('es');
-
-            // Obtener la fecha de evaluación del formulario
             $evaluation_date = $request->input('evaluation_date');
-
-            // Crear un objeto Carbon a partir de la fecha ingresada
             $carbonDate = Carbon::createFromFormat('Y-m-d', $evaluation_date);
-
-            // Obtener el nombre del mes traducido
             $nombre_mes = $carbonDate->format('F');
 
             Evaluaciones::create([
@@ -70,7 +60,6 @@ class EvaluacionesController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Update - Save the edited item to the database
         $request->validate([
             'funcionario_id' => 'required|numeric',
             'evaluation_date' => 'required|date',
@@ -82,16 +71,9 @@ class EvaluacionesController extends Controller
         $evaluationExis = Evaluaciones::where('funcionario_id', '=', $request->funcionario_id)->where('evaluation_date', '=', $request->evaluation_date)->where('id', '!==', $id)->first();
 
         if (!$evaluationExis) {
-            // Establecer la localización a español
             Carbon::setLocale('es');
-
-            // Obtener la fecha de evaluación del formulario
             $evaluation_date = $request->input('evaluation_date');
-
-            // Crear un objeto Carbon a partir de la fecha ingresada
             $carbonDate = Carbon::createFromFormat('Y-m-d', $evaluation_date);
-
-            // Obtener el nombre del mes traducido
             $nombre_mes = $carbonDate->format('F');
 
            $send = Evaluaciones::where('id', '=', $id)->update([
@@ -114,7 +96,6 @@ class EvaluacionesController extends Controller
 
     public function destroy($id)
     {
-        // Delete - Remove an item from the database
         $evaluation = Evaluaciones::find($id);
         $evaluation->delete();
 

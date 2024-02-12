@@ -70,7 +70,7 @@
                         <div class="col-md-3 mb-3">
                             <label for="name" class="form-label fw-semibold">Fecha Inicio:</label>
                             <input type="date" class="form-control border-2 shadow-sm" id="start_date" name="start_date"
-                                placeholder="Ingresar nombre y apellidos" required>
+                                placeholder="Ingrese fecha de inicio de contratro" required>
                             <div class="invalid-feedback fw-medium" class="">
                                 <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                             </div>
@@ -84,7 +84,7 @@
                         <div class="col-md-3 mb-3">
                             <label for="name" class="form-label fw-semibold">Fecha Terminacion:</label>
                             <input type="date" class="form-control border-2 shadow-sm" id="close_date" name="close_date"
-                                placeholder="Ingresar nombre y apellidos" required>
+                                placeholder="Ingrese fecha fin de contratro" required>
                             <div class="invalid-feedback fw-medium" class="">
                                 <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                             </div>

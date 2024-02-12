@@ -35,73 +35,29 @@
 
                         </div>
 
-                        <div class="col-md-12 mb-4">
-                            <label for="identificacion" class="form-label fw-semibold">Fecha:</label>
-                            <input type="date" class="form-control border-2 shadow-sm" id="evaluation_date"
-                                name="evaluation_date" placeholder="Ingresar número de identificación" required>
+                        <div class="col-md-6 mb-3">
+
+                            <label for="rol" class="form-label fw-semibold">Año:</label>
+                            <input type="number" class="form-control border-2 shadow-sm" id="year" name="year" placeholder="Ingresar número de identificación" required value="{{$row->year}}">
+
                             <div class="invalid-feedback fw-medium">
                                 <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                             </div>
-                            @if ($errors->has('evaluation_date'))
+                            @if ($errors->has('year'))
                                 <div class="text-danger fw-medium">
                                     <i class="bi bi-exclamation-circle"></i>
-                                    Este campo es obligatorio!
+                                    Debe seleccionar una opción!
                                 </div>
                             @endif
                         </div>
-
-                        <div class="col-md-6 mb-4">
-                            <label for="identificacion" class="form-label fw-semibold">Plan De Trabajo:</label>
-                            <input type="number" class="form-control border-2 shadow-sm" id="workplan" name="workplan"
+                        <div class="col-md-6 mb-3">
+                            <label for="identificacion" class="form-label fw-semibold">Valor:</label>
+                            <input type="number" class="form-control border-2 shadow-sm" id="year_value" name="year_value" value="{{$row->year_value}}"
                                 placeholder="Ingresar número de identificación" required>
                             <div class="invalid-feedback fw-medium">
                                 <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                             </div>
-                            @if ($errors->has('workplan'))
-                                <div class="text-danger fw-medium">
-                                    <i class="bi bi-exclamation-circle"></i>
-                                    Este campo es obligatorio!
-                                </div>
-                            @endif
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="identificacion" class="form-label fw-semibold">Parciales:</label>
-                            <input type="number" class="form-control border-2 shadow-sm" id="partials" name="partials"
-                                placeholder="Ingresar número de identificación" required>
-                            <div class="invalid-feedback fw-medium">
-                                <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
-                            </div>
-                            @if ($errors->has('partials'))
-                                <div class="text-danger fw-medium">
-                                    <i class="bi bi-exclamation-circle"></i>
-                                    Este campo es obligatorio!
-                                </div>
-                            @endif
-                        </div>
-
-                        <div class="col-md-6 mb-4">
-                            <label for="identificacion" class="form-label fw-semibold">Finales:</label>
-                            <input type="number" class="form-control border-2 shadow-sm" id="finals" name="finals"
-                                placeholder="Ingresar número de identificación" required>
-                            <div class="invalid-feedback fw-medium">
-                                <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
-                            </div>
-                            @if ($errors->has('finals'))
-                                <div class="text-danger fw-medium">
-                                    <i class="bi bi-exclamation-circle"></i>
-                                    Este campo es obligatorio!
-                                </div>
-                            @endif
-                        </div>
-
-                        <div class="col-md-6 mb-4">
-                            <label for="identificacion" class="form-label fw-semibold">Extraordinarias:</label>
-                            <input type="number" class="form-control border-2 shadow-sm" id="extraordinary"
-                                name="extraordinary" placeholder="Ingresar número de identificación" required>
-                            <div class="invalid-feedback fw-medium">
-                                <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
-                            </div>
-                            @if ($errors->has('extraordinary'))
+                            @if ($errors->has('year_value'))
                                 <div class="text-danger fw-medium">
                                     <i class="bi bi-exclamation-circle"></i>
                                     Este campo es obligatorio!
@@ -111,8 +67,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-sm btn-success"
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success"
                         onclick="validarForm({{ $row->id }})">Modificar</button>
                 </div>
             </form>

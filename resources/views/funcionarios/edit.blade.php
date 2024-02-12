@@ -71,7 +71,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="name" class="form-label fw-semibold">Fecha Inicio:</label>
                             <input type="date" class="form-control border-2 shadow-sm" id="start_date" name="start_date" value="{{$row->start_date}}"
-                                placeholder="Ingresar nombre y apellidos" required>
+                                placeholder="Ingrese fecha de inicio de contratro" required>
                             <div class="invalid-feedback fw-medium" class="">
                                 <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                             </div>
@@ -85,7 +85,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="name" class="form-label fw-semibold">Fecha Terminacion:</label>
                             <input type="date" class="form-control border-2 shadow-sm" id="close_date" name="close_date" value="{{$row->start_date}}"
-                                placeholder="Ingresar nombre y apellidos" required>
+                                placeholder="Ingrese fecha fin de contratro" required>
                             <div class="invalid-feedback fw-medium" class="">
                                 <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                             </div>
@@ -99,8 +99,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-sm btn-success" onclick="validarForm({{ $row->id }})">Modificar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success" onclick="validarForm({{ $row->id }})">Modificar</button>
                 </div>
             </form>
         </div>

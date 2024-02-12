@@ -75,8 +75,6 @@ class FuncionariosController extends Controller
 
         $userExis = User::where('email', $request->email)->where('id' , '!=', $funcionario->user_id)->first();
 
-        // return response()->json($userExis);
-
         if (!$userExis) {
             $funcionario = Funcionarios::where('id', '=', $id)->update([
                 'start_date' => $request->start_date,

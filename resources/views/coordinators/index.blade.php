@@ -3,16 +3,16 @@
 
 <div class="contenedor">
     <div class="mt-2 text-lg-center">
-        <h4 class="card-title color mb-3 text-lg-center fw-semibold">Coordinaciones - Encargados <i class="bi bi-building-fill-check"></i></h4>
+        <h4 class="card-title color mb-2 text-lg-center fw-semibold">Coordinaciones - Encargados <i class="bi bi-building-fill-check"></i></h4>
         <p class="fw-semibold text-secondary">Registro y Panel de control de los diferentes coordinaciones</p>
     </div>
-    <div class="formulario">
+    <div class="formulario mt-3">
         <form action="{{route('coordinators.post')}}" method="post" class="row needs-validation" novalidate>
             @csrf
             <div class="col-md-6 mb-3">
                 <label for="name" class="form-label fw-semibold">Coordinacion:</label>
                 <input type="text" class="form-control border-2 shadow-sm" id="coordinacion" name="coordinacion"
-                    placeholder="Ingresar nombre y apellidos" required>
+                    placeholder="Ingresar el nombre de la coordinación" required>
                 <div class="invalid-feedback fw-medium" class="">
                     <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                 </div>
@@ -27,7 +27,7 @@
             <div class="col-md-6 mb-3">
                 <label for="name" class="form-label fw-semibold">Encargado:</label>
                 <input type="text" class="form-control border-2 shadow-sm" id="encargado" name="encargado"
-                    placeholder="Ingresar nombre y apellidos" required>
+                    placeholder="Ingrese nombre del encargado" required>
                 <div class="invalid-feedback fw-medium" class="">
                     <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                 </div>
@@ -43,7 +43,7 @@
 
             <div class="text-center mb-2">
                 <button type="submit" class="btn btn-success fw-medium sahdow-sm ">Registrar
-                    Funcionario <i class="bi bi-person-fill-check"></i></button>
+                    Coordinacion <i class="bi bi-building-fill-check"></i></button>
             </div>
         </form>
 

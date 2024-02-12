@@ -58,3 +58,6 @@ modalId.addEventListener('show.bs.modal', function(event) {
 });
 
 
+function mayus(e) {
+    e.value = e.value.toUpperCase();
+}

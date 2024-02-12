@@ -58,7 +58,7 @@
                 <div class="col-md-4 mb-3">
                     <label for="identificacion" class="form-label fw-semibold">Valor:</label>
                     <input type="number" class="form-control border-2 shadow-sm" id="month_value" name="month_value"
-                        placeholder="Ingresar número de identificación" required>
+                        placeholder="Ingresar valor mensual" required>
                     <div class="invalid-feedback fw-medium">
                         <i class="bi bi-exclamation-circle"></i> Este campo es obligatorio!
                     </div>

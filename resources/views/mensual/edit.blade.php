@@ -80,8 +80,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-sm btn-success"
+                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success"
                         onclick="validarForm({{ $row->id }})">Modificar</button>
                 </div>
             </form>

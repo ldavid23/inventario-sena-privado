@@ -16,16 +16,12 @@ class CoordinacionesController extends Controller
 
     public function index()
     {
-        // Read - Display a list of items
         $coordinators = Coordinaciones::all();
         return view('coordinators.index', compact('coordinators'));
     }
 
-
-
     public function store(Request $request)
     {
-        // Create - Save a new item to the database
         $request->validate([
             'coordinacion' => 'required|string',
             'encargado' => 'required|string',
@@ -47,17 +43,13 @@ class CoordinacionesController extends Controller
         }
     }
 
-
-
     public function update(Request $request, $id)
     {
-        // Update - Save the edited item to the database
         $request->validate([
             'coordinacion' => 'required|string',
             'encargado' => 'required|string',
 
         ]);
-
 
         $coordinators = Coordinaciones::where('coordinacion', '=', $request->coordinacion)->where('id', '!=', $id)->first();
 
@@ -75,7 +67,6 @@ class CoordinacionesController extends Controller
 
     public function destroy($id)
     {
-        // Delete - Remove an item from the database
         $coordinator = Coordinaciones::find($id)->delete();
 
         return redirect()->route('coordinators')
