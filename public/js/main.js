@@ -61,3 +61,10 @@ modalId.addEventListener('show.bs.modal', function(event) {
 function mayus(e) {
     e.value = e.value.toUpperCase();
 }
+
+function cambiarEstilos() {
+    var botones = document.getElementsByClassName('fc-button-primary');
+    for (var i = 0; i < botones.length; i++) {
+        botones[i].classList.add('clicked');
+    }
+}

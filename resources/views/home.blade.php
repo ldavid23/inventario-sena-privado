@@ -1,29 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="contenedor">
+    <div class="container mt-5">
+        <div id="calendario">
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
         </div>
     </div>
-</div> --}}
+</div>
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendario');
+
+            var eventos = [
+                @foreach ($fechas as $fecha)
+                    {
+                        title: 'Evento',
+                        start: '{{ $fecha->evaluation_date }}',
+                        allDay: true
+
+                    },
+                @endforeach
+            ];
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: eventos,
+                locale : 'es'
+            });
+
+            calendar.render();
+        });
+    </script>
 
 
-
-    </div>
 @endsection

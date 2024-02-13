@@ -43,10 +43,12 @@
 
 
             <hr class="d-none" id='separador'>
+            <div class="container">
+                <div id="calendario">
 
-            <div id="calendario">
-
+                </div>
             </div>
+
             <div class="container mt-4">
                 <form id="miFormulario" action="{{ route('guardar_fechas') }}" method="POST">
                     @csrf
@@ -191,7 +193,8 @@
                             return {
                                 title: 'Evento', // Título del evento
                                 start: fecha, // Fecha de inicio del evento
-                                allDay: true // Indica que el evento dura todo el día
+                                allDay: true,
+                                locale: 'es' // Indica que el evento dura todo el día
                                 // Otros atributos del evento...
                             };
                         })
