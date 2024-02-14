@@ -16,11 +16,13 @@ class EvaluacionesController extends Controller
     }
     public function index()
     {
-        //$evaluaciones = Evaluaciones::all();
+        $fecha_actual = now()->toDateString(); // Obtiene la fecha actual en formato 'Y-m-d'
+
         $evaluaciones = DB::table('evaluaciones')
             ->select('evaluaciones.id', 'evaluaciones.funcionario_id', 'evaluaciones.evaluation_date', 'evaluaciones.evaluation_month', 'evaluaciones.workplan', 'evaluaciones.partials', 'evaluaciones.finals', 'evaluaciones.extraordinary', DB::raw('SUM(evaluaciones.workplan + evaluaciones.partials + evaluaciones.finals + evaluaciones.extraordinary) as total_evaluations'), 'users.name as funcionario')
             ->join('funcionarios', 'evaluaciones.funcionario_id', '=', 'funcionarios.id')
             ->join('users', 'funcionarios.user_id', '=', 'users.id')
+            ->whereDate('funcionarios.close_date', '>', $fecha_actual) // Filtra los funcionarios cuya close_date sea posterior a la fecha actual
             ->groupBy('evaluaciones.id', 'evaluaciones.funcionario_id', 'evaluaciones.evaluation_date', 'evaluaciones.evaluation_month', 'evaluaciones.workplan', 'evaluaciones.partials', 'evaluaciones.finals', 'evaluaciones.extraordinary', 'users.name')
             ->get();
 
@@ -212,31 +214,41 @@ class EvaluacionesController extends Controller
                 'month_value' => $evaluacion->month_value,
                 'calculated_total' => $total,
             ];
-
-            return view('reportes.mensual', ['evaluaciones' => $evaluacionesCalculadas]);
         }
+
+        return view('reportes.mensual', ['evaluaciones' => $evaluacionesCalculadas]);
     }
 
     public function reporte_anual()
     {
         $evaluaciones = DB::table('evaluaciones')
-        ->select('evaluaciones.funcionario_id', DB::raw('YEAR(evaluaciones.evaluation_date) as year'), DB::raw('SUM(evaluaciones.workplan + evaluaciones.partials + evaluaciones.finals + evaluaciones.extraordinary) as total_evaluations'), 'users.name as funcionario', 'anuals.year_value')
-        ->join('funcionarios', 'evaluaciones.funcionario_id', '=', 'funcionarios.id')
-        ->join('users', 'funcionarios.user_id', '=', 'users.id')
-        ->join('anuals', function($join) {
-            $join->on('evaluaciones.funcionario_id', '=', 'anuals.funcionario_id')
-                 ->whereRaw('YEAR(evaluaciones.evaluation_date) = anuals.year');
-        })
-        ->where('evaluaciones.workplan', '!=', 0)
-        ->orWhere('evaluaciones.partials', '!=', 0)
-        ->orWhere('evaluaciones.finals', '!=', 0)
-        ->orWhere('evaluaciones.extraordinary', '!=', 0)
-        ->groupBy('evaluaciones.funcionario_id', 'year', 'users.name', 'anuals.year_value', 'evaluaciones.evaluation_date')
-        ->get();
+            ->select('evaluaciones.funcionario_id', DB::raw('YEAR(evaluaciones.evaluation_date) as year'), DB::raw('SUM(evaluaciones.workplan + evaluaciones.partials + evaluaciones.finals + evaluaciones.extraordinary) as total_evaluations'), 'users.name as funcionario', 'anuals.year_value')
+            ->join('funcionarios', 'evaluaciones.funcionario_id', '=', 'funcionarios.id')
+            ->join('users', 'funcionarios.user_id', '=', 'users.id')
+            ->join('anuals', function ($join) {
+                $join->on('evaluaciones.funcionario_id', '=', 'anuals.funcionario_id')
+                    ->whereRaw('YEAR(evaluaciones.evaluation_date) = anuals.year');
+            })
+            ->where('evaluaciones.workplan', '!=', 0)
+            ->orWhere('evaluaciones.partials', '!=', 0)
+            ->orWhere('evaluaciones.finals', '!=', 0)
+            ->orWhere('evaluaciones.extraordinary', '!=', 0)
+            ->groupBy('evaluaciones.funcionario_id', 'year', 'users.name', 'anuals.year_value', 'evaluaciones.evaluation_date')
+            ->get();
 
 
+        $evaluacionesCalculadas = [];
 
-        // return response()->json($evaluaciones);
-        return view('reportes.anual', compact('evaluaciones'));
+        foreach ($evaluaciones as $evaluacion) {
+            $total = $evaluacion->total_evaluations / $evaluacion->year_value;
+            $evaluacionesCalculadas[] = [
+                'funcionario' => $evaluacion->funcionario,
+                'total_evaluations' => $evaluacion->total_evaluations,
+                'year' => $evaluacion->year,
+                'calculated_total' => $total,
+            ];
+        }
+
+        return view('reportes.mensual', ['evaluaciones' => $evaluacionesCalculadas]);
     }
 }

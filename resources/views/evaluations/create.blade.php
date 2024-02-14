@@ -108,7 +108,7 @@
                     contenedorFechasGeneradasDiv.appendChild(divContenedor);
                     contadorFechas++;
                     fechasGeneradas.push(fecha.toISOString().substr(0, 10));
-                    fecha.setDate(fecha.getDate() + 15);
+                    fecha.setDate(fecha.getDate() + 14);
                 }
                 if (contadorFechas == 0) {
                     Swal.fire({

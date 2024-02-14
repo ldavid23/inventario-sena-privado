@@ -24,10 +24,10 @@
                     <tbody>
                         @foreach ($evaluaciones as $evaluacion)
                             <tr>
-                                <td>{{ $evaluacion->funcionario}}</td>
-                                <td>{{ $evaluacion->year_value }}</td>
-                                <td>{{ $evaluacion->year}}</td>
-                                <td>{{ $evaluacion->total_evaluations}}</td>
+                                <td>{{ $evaluacion['funcionario']}}</td>
+                                <td>{{ $evaluacion['total_evaluations'] }}</td>
+                                <td>{{ $evaluacion['year']}}</td>
+                                <td>{{ $evaluacion['calculated_total']}}</td>
 
                         @endforeach
                 </table>
