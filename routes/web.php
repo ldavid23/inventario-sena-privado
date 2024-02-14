@@ -142,3 +142,8 @@ Route::post('/evaluations/{id}', [App\Http\Controllers\EvaluacionesController::c
 Route::get('/generar-fechas',  [App\Http\Controllers\EvaluacionesController::class, 'show'])->name('mostrar-fechas');
 
 Route::post('/guardar-fechas',  [App\Http\Controllers\EvaluacionesController::class, 'generar'])->name('guardar_fechas');
+
+
+
+Route::get('/reporte-mensual', [App\Http\Controllers\EvaluacionesController::class,'reporte_mensual'])->name('reporte-mensual');
+Route::get('/reporte-anual',  [App\Http\Controllers\EvaluacionesController::class,'reporte_anual'])->name('reporte-anual');

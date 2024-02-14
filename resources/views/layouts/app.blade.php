@@ -72,7 +72,8 @@
                     Reportes
                 </a>
                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                    <a class="dropdown-item" href="">Anuales</a>
+                    <a class="dropdown-item" href="{{ route('reporte-mensual')}}">Mensuales</a>
+                    <a class="dropdown-item" href="{{ route('reporte-anual')}}">Anuales</a>
                 </div>
             </div>
 

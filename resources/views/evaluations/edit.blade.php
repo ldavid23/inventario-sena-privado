@@ -14,7 +14,7 @@
                         <div class="col-md-12 mb-3">
                             <label for="rol" class="form-label fw-semibold">Funcionario:</label>
                             <select class="form-select border-2 shadow-sm" id="funcionario_id" name="funcionario_id" required>
-                                <option selected value="{{ $evaluacion->funcionario_id }}">{{ $evaluacion->funcionarios->user->name }}
+                                <option selected value="{{ $evaluacion->funcionario_id }}">{{ $evaluacion->funcionario }}
                                 </option>
                                 @foreach ($funcionarios as $row)
                                     @if ($row->id !== $evaluacion->funcionario_id)

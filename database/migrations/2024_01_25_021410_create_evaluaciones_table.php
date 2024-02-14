@@ -19,6 +19,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->date('evaluation_date');
             $table->string('evaluation_month');
+            $table->integer('evaluation_years');
             $table->integer('workplan');
             $table->integer('partials');
             $table->integer('finals');

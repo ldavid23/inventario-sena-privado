@@ -4,7 +4,8 @@
         <div class="mt-2 text-lg-center">
             <h4 class="card-title color mb-1 text-lg-center fw-semibold">Control De Evaluaciones <i
                     class="bi bi-building-fill-check"></i></h4>
-            <p class="fw-semibold text-secondary mb-5">Registro y Panel de control de los entregas de los diferentes tipos de evaliaciones</p>
+            <p class="fw-semibold text-secondary mb-5">Registro y Panel de control de los entregas de los diferentes tipos de
+                evaliaciones</p>
         </div>
 
         <div class="m-2">
@@ -124,12 +125,13 @@
                     <thead>
                         <tr>
                             <th>Instructor</th>
-                            <th>fecha</th>
                             <th>Mes</th>
+                            <th>Fecha</th>
                             <th>Plan de trabajo</th>
                             <th>Parciales</th>
                             <th>Finales</th>
                             <th>Extraordinaria</th>
+                            <th>Total</th>
                             <th>Funciones</th>
 
 
@@ -139,13 +141,14 @@
                     <tbody>
                         @foreach ($evaluaciones as $evaluacion)
                             <tr>
-                                <td>{{ $evaluacion->funcionarios->user->name }}</td>
-                                <td>{{ $evaluacion->evaluation_date }}</td>
+                                <td>{{ $evaluacion->funcionario }}</td>
                                 <td>{{ $evaluacion->evaluation_month }}</td>
+                                <td>{{ $evaluacion->evaluation_date }}</td>
                                 <td>{{ $evaluacion->workplan }}</td>
                                 <td>{{ $evaluacion->partials }}</td>
                                 <td>{{ $evaluacion->finals }}</td>
                                 <td>{{ $evaluacion->extraordinary }}</td>
+                                <td>{{ $evaluacion->total_evaluations }}</td>
                                 <td class="d-flex">
                                     <button type="button" class="btn btn-warning btn-sm fw-semibold me-2"
                                         data-bs-toggle="modal" data-bs-target="#edit{{ $evaluacion->id }}">
@@ -155,7 +158,7 @@
                                         method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-danger modificar btn-sm"
-                                            id="editarBtn" >Eliminar <i class="bi bi-trash3"></i> </button>
+                                            id="editarBtn">Eliminar <i class="bi bi-trash3"></i> </button>
                                     </form>
                                 </td>
                             </tr>
@@ -165,18 +168,18 @@
 
             </div>
         </div>
-
-        @if ($message = Session::get('success'))
-            <script>
-                Swal.fire('Proceso finalizado correctamente!')
-            </script>
-        @elseif ($message = Session::get('error'))
-            <script>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error de registro...',
-                    text: '{{ $message }}',
-                })
-            </script>
-        @endif
-    @endsection
+    </div>
+    @if ($message = Session::get('success'))
+        <script>
+            Swal.fire('Proceso finalizado correctamente!')
+        </script>
+    @elseif ($message = Session::get('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de registro...',
+                text: '{{ $message }}',
+            })
+        </script>
+    @endif
+@endsection

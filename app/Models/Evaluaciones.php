@@ -12,6 +12,7 @@ class Evaluaciones extends Model
     static $rules = [
         'evaluation_date' => 'required',
         'evaluation_month' => 'required',
+        'evaluation_years' => 'required',
         'workplan'  => 'required',
         'partials' => 'required',
         'finals' => 'required',
@@ -22,6 +23,7 @@ class Evaluaciones extends Model
     protected $fillable = [
         'evaluation_date',
         'evaluation_month',
+        'evaluation_years',
         'workplan' ,
         'partials',
         'finals',
