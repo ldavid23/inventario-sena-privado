@@ -147,3 +147,24 @@ Route::post('/guardar-fechas',  [App\Http\Controllers\EvaluacionesController::cl
 
 Route::get('/reporte-mensual', [App\Http\Controllers\EvaluacionesController::class,'reporte_mensual'])->name('reporte-mensual');
 Route::get('/reporte-anual',  [App\Http\Controllers\EvaluacionesController::class,'reporte_anual'])->name('reporte-anual');
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Distribucion Path 👍
+|--------------------------------------------------------------------------
+*/
+
+//Esta es la tabla que pinta el listado de evaluaciones que ya se han creado en la base de datos (dos botones, editar -> te lleva a la vista y eliminar -> elimina el elemento)
+Route::get('/distribucion', [App\Http\Controllers\DistribucionController::class, 'index'])->name('distribucion');
+
+//Esta ruta es para almacenar una evaluacion en la base de datos que luego sera mostrada en la vista de la linea 24
+Route::post('/distribucion', [App\Http\Controllers\DistribucionController::class, 'store'])->name('distribucion.post');
+
+//Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
+Route::post('/distribucion/{id}', [App\Http\Controllers\DistribucionController::class, 'update'])->name('distribucion.update');
+
+//Esta ruta es para eliminar una evaluacion ya creada anteriormente
+Route::post('/distribucion/{id}', [App\Http\Controllers\DistribucionController::class, 'destroy'])->name('distribucion.destroy');
