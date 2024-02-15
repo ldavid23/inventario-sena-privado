@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\MensualsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Mensual;
 use Illuminate\Http\Request;
 use App\Models\Funcionarios;
@@ -69,5 +71,13 @@ class MensualController extends Controller
 
         return redirect()->route('mensual')
         ->with('success', 'Proceso Terminado Con Exito!');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate(['mensuals_excel' => 'required | mimes:xls,xlsx']);
+        Excel::import(new MensualsImport, request()->file('mensuals_excel') );
+
+        return redirect()->route('mensual')->with('success', 'Subida terminada con exito');
     }
 }

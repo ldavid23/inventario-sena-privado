@@ -93,7 +93,8 @@ Route::post('/Mensuals/{id}', [App\Http\Controllers\MensualController::class, 'u
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
 Route::post('/Mensual/{id}', [App\Http\Controllers\MensualController::class, 'destroy'])->name('mensual.destroy');
 
-
+//Esta es la ruta para almacenar una evaluacion atravez de Excel
+Route::post('/Mensuals/import', [App\Http\Controllers\MensualController::class, 'import'])->name('mensual.import');
 
 /*
 |--------------------------------------------------------------------------
