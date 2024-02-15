@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('mes');
             $table->integer('contratos');
             $table->integer('alternativas');
+            $table->integer('total');
 
             $table->timestamps();
         });

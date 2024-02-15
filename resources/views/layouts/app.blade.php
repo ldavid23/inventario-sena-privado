@@ -59,8 +59,11 @@
                 <div class="dropdown-menu" aria-labelledby="triggerId">
                     <a class="dropdown-item" href="{{ route('mensual') }}">Mensuales</a>
                     <a class="dropdown-item" href="{{ route('anual') }}">Anuales</a>
+                    <a class="dropdown-item" href="{{ route('distribucion') }}">Distribuciones</a>
                 </div>
             </div>
+
+
 
 
 

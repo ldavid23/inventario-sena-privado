@@ -187,6 +187,10 @@
                             funcionario: selectInput.value
                         };
                         xhr.send(JSON.stringify(datos));
+                        
+                        fechasGenerada = [];
+                        fechasGeneradasInput.value = "";
+
                     } else {
                         console.error('Una o más fechas no son válidas');
                     }

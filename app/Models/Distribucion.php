@@ -14,16 +14,17 @@ class Distribucion extends Model
         'mes' => 'required',
         'contratos' => 'required',
         'alternativas'=> 'required',
+        'total' => 'required',
 
 
     ];
 
     protected $fillable = [
-        'evaluation_date',
+        'funcionario_id',
         'mes',
         'contratos',
         'alternativas',
-
+        'total,'
     ];
 
 

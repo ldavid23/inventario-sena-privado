@@ -164,7 +164,7 @@ Route::get('/distribucion', [App\Http\Controllers\DistribucionController::class,
 Route::post('/distribucion', [App\Http\Controllers\DistribucionController::class, 'store'])->name('distribucion.post');
 
 //Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
-Route::post('/distribucion/{id}', [App\Http\Controllers\DistribucionController::class, 'update'])->name('distribucion.update');
+Route::post('/distribuciones/{id}', [App\Http\Controllers\DistribucionController::class, 'update'])->name('distribucion.update');
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
 Route::post('/distribucion/{id}', [App\Http\Controllers\DistribucionController::class, 'destroy'])->name('distribucion.destroy');
