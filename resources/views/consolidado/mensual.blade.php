@@ -2,7 +2,7 @@
 @section('content')
     <div class="contenedor">
         <div class="mt-2 text-lg-center">
-            <h4 class="card-title color mb-3 text-lg-center fw-semibold">Distribuciones Seguimiento</h4>
+            <h4 class="card-title color mb-3 text-lg-center fw-semibold">Consolidado Mensual</h4>
         </div>
         <div class="formulario">
             <form action="{{ route('distribucion.post') }}" method="post" class="row needs-validation" novalidate>

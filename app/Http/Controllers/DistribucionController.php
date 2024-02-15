@@ -19,20 +19,22 @@ class DistribucionController extends Controller
 
     public function store(Request $request)
     {
-        request()->validate(Distribucion::$rules);
+        $request->validate([
+            'funcionario_id'=> 'required',
+            'mes' => 'required',
+            'contratos' => 'required',
+            'alternativas'=> 'required',
+        ]);
 
         $distribucionExist = Distribucion::where('funcionario_id', '=', $request->funcionario_id)->where('mes', '=', $request->mes)->first();
         if (!$distribucionExist) {
-
-            $total = $request->contratos + $request->alternativas;
 
             $asignacion = Distribucion::create([
                 'funcionario_id'=> $request->funcionario_id,
                 'mes' => $request->mes,
                 'contratos' => $request->contratos,
                 'alternativas'=> $request->alternativas,
-                'total' => $total
-
+                'total' => json_decode($request->contratos + $request->alternativas)
             ]);
 
             return redirect()->route('distribucion')
@@ -62,6 +64,7 @@ class DistribucionController extends Controller
                 'mes' => $request->mes,
                 'contratos' => $request->contratos,
                 'alternativas'=> $request->alternativas,
+                'total' => json_decode($request->contratos + $request->alternativas)
             ]);
 
             return redirect()->route('distribucion')

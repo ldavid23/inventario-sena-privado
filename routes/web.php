@@ -145,8 +145,8 @@ Route::post('/guardar-fechas',  [App\Http\Controllers\EvaluacionesController::cl
 
 
 
-Route::get('/reporte-mensual', [App\Http\Controllers\EvaluacionesController::class,'reporte_mensual'])->name('reporte-mensual');
-Route::get('/reporte-anual',  [App\Http\Controllers\EvaluacionesController::class,'reporte_anual'])->name('reporte-anual');
+Route::get('/reporte-mensual', [App\Http\Controllers\EvaluacionesController::class, 'reporte_mensual'])->name('reporte-mensual');
+Route::get('/reporte-anual',  [App\Http\Controllers\EvaluacionesController::class, 'reporte_anual'])->name('reporte-anual');
 
 
 
@@ -168,3 +168,23 @@ Route::post('/distribuciones/{id}', [App\Http\Controllers\DistribucionController
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
 Route::post('/distribucion/{id}', [App\Http\Controllers\DistribucionController::class, 'destroy'])->name('distribucion.destroy');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Consolidado Path 👍
+|--------------------------------------------------------------------------
+*/
+
+//Esta es la tabla que pinta el listado de evaluaciones que ya se han creado en la base de datos (dos botones, editar -> te lleva a la vista y eliminar -> elimina el elemento)
+Route::get('/consolidado', [App\Http\Controllers\ConsolidadoController::class, 'index'])->name('consolidado');
+
+//Esta ruta es para almacenar una evaluacion en la base de datos que luego sera mostrada en la vista de la linea 24
+Route::post('/consolidado', [App\Http\Controllers\ConsolidadoController::class, 'store'])->name('consolidado.post');
+
+//Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
+Route::post('/consolidados/{id}', [App\Http\Controllers\ConsolidadoController::class, 'update'])->name('consolidado.update');
+
+//Esta ruta es para eliminar una evaluacion ya creada anteriormente
+Route::post('/consolidado/{id}', [App\Http\Controllers\ConsolidadoController::class, 'destroy'])->name('consolidado.destroy');
