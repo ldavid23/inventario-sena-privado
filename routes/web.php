@@ -84,7 +84,8 @@ Route::post('/funcionario/{id}', [App\Http\Controllers\FuncionariosController::c
 
 //Esta es la tabla que pinta el listado de evaluaciones que ya se han creado en la base de datos (dos botones, editar -> te lleva a la vista y eliminar -> elimina el elemento)
 Route::get('/Mensual', [App\Http\Controllers\MensualController::class, 'index'])->name('mensual');
-
+//Esta es la ruta para almacenar una evaluacion atravez de Excel
+Route::post('/Mensuals/import', [App\Http\Controllers\MensualController::class, 'import'])->name('mensual.import');
 //Esta ruta es para almacenar una evaluacion en la base de datos que luego sera mostrada en la vista de la linea 24
 Route::post('/Mensual', [App\Http\Controllers\MensualController::class, 'store'])->name('mensual.post');
 //Esta ruta es para actualizar una evaluacion con los datos que el usuario haya cambiado
@@ -92,9 +93,6 @@ Route::post('/Mensuals/{id}', [App\Http\Controllers\MensualController::class, 'u
 
 //Esta ruta es para eliminar una evaluacion ya creada anteriormente
 Route::post('/Mensual/{id}', [App\Http\Controllers\MensualController::class, 'destroy'])->name('mensual.destroy');
-
-//Esta es la ruta para almacenar una evaluacion atravez de Excel
-Route::post('/Mensuals/import', [App\Http\Controllers\MensualController::class, 'import'])->name('mensual.import');
 
 /*
 |--------------------------------------------------------------------------

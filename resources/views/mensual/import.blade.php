@@ -7,9 +7,9 @@
                         class="bi bi-pencil-square"></i></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('mensual.import') }}" method="POST" enctype = "multipart/form-data">
+            <form action="{{ route('mensual.import') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            @csrf    
                 <div class="modal-body">
-                    @csrf
                     <input class="form-control" type="file" name="mensuals_excel" id="mensuals_excel" accept=".xlsx"
                         required>
                 </div>

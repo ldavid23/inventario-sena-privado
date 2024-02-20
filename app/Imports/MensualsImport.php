@@ -17,12 +17,16 @@ class MensualsImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        $user = User::where('name','=',$row['funcionario'])->first();
+        if(is_null($row['funcionario'])){
+            return null;
+        }
+
+        $user = User::where('name','=',$row['funcionario'] ?? $row['nombre funcionario'])->first();
         $funcionario = Funcionarios::where('user_id','=',$user->id)->first();
 
         return new Mensual([
-            'month' => $row['mes'],
-            'month_value' => $row['valor'],
+            'month' => $row['mes'] ?? $row['month'],
+            'month_value' => $row['valor'] ?? $row['month_value'] ?? $row['value'],
             'funcionario_id' => $funcionario->id
         ]);
     }
